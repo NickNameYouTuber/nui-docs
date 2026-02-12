@@ -1,0 +1,173 @@
+import { ComponentPreview } from '../../components/ComponentPreview';
+import { PropsTable } from '../../components/PropsTable';
+import { CopyInput } from '@nicorp/nui';
+
+export default function CopyInputPage() {
+  return (
+    <div>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4">CopyInput</h1>
+        <p className="text-xl text-muted-foreground">
+          A read-only input field with a copy-to-clipboard button for easy sharing of text values.
+        </p>
+      </div>
+
+      <div className="space-y-8">
+        <ComponentPreview
+          title="Basic Copy Input"
+          description="Simple copy input for sharing text"
+          code={`<CopyInput
+  value="https://example.com/api/endpoint"
+/>`}
+        >
+          <CopyInput
+            value="https://example.com/api/endpoint"
+          />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="With Label"
+          description="Copy input with a descriptive label"
+          code={`<CopyInput
+  label="API Endpoint"
+  value="https://api.example.com/v1/users"
+/>`}
+        >
+          <CopyInput
+            label="API Endpoint"
+            value="https://api.example.com/v1/users"
+          />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="API Key Example"
+          description="Common use case for API keys"
+          code={`<div className="space-y-4">
+  <CopyInput
+    label="Public Key"
+    value="pk_live_51HqK8yBmXYz9K..."
+  />
+  <CopyInput
+    label="Secret Key"
+    value="sk_live_51HqK8yBmXYz9K..."
+  />
+</div>`}
+        >
+          <div className="space-y-4">
+            <CopyInput
+              label="Public Key"
+              value="pk_live_51HqK8yBmXYz9K8nR4fW3pL2eH..."
+            />
+            <CopyInput
+              label="Secret Key"
+              value="sk_live_51HqK8yBmXYz9K8nR4fW3pL2eH..."
+            />
+          </div>
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="Authentication Token"
+          description="Copy input for JWT tokens"
+          code={`<CopyInput
+  label="Access Token"
+  value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+/>`}
+        >
+          <CopyInput
+            label="Access Token"
+            value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"
+          />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="Installation Command"
+          description="Copy input for command-line instructions"
+          code={`<CopyInput
+  label="Install Package"
+  value="npm install @nicorp/nui"
+/>`}
+        >
+          <CopyInput
+            label="Install Package"
+            value="npm install @nicorp/nui"
+          />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="Share Link"
+          description="Copy input for sharing URLs"
+          code={`<CopyInput
+  label="Share Link"
+  value="https://app.example.com/invite/abc123xyz"
+/>`}
+        >
+          <CopyInput
+            label="Share Link"
+            value="https://app.example.com/invite/abc123xyz"
+          />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="Webhook URL"
+          description="Copy input for webhook endpoints"
+          code={`<CopyInput
+  label="Webhook URL"
+  value="https://api.example.com/webhooks/payment-success"
+/>`}
+        >
+          <CopyInput
+            label="Webhook URL"
+            value="https://api.example.com/webhooks/payment-success"
+          />
+        </ComponentPreview>
+
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Props</h2>
+          <PropsTable
+            props={[
+              {
+                name: 'value',
+                type: 'string',
+                default: '-',
+                description: 'The text value to display and copy (required)',
+              },
+              {
+                name: 'label',
+                type: 'string',
+                default: '-',
+                description: 'Optional label displayed above the input',
+              },
+              {
+                name: 'className',
+                type: 'string',
+                default: '-',
+                description: 'Additional CSS classes for the input',
+              },
+            ]}
+          />
+        </div>
+
+        <div className="rounded-lg border p-6 bg-muted/50">
+          <h3 className="font-semibold mb-2">Features</h3>
+          <ul className="text-sm text-muted-foreground space-y-2 list-disc pl-5">
+            <li>
+              <strong>Read-only:</strong> Input is non-editable to prevent accidental modifications
+            </li>
+            <li>
+              <strong>Visual Feedback:</strong> Copy button shows a checkmark for 2 seconds after successful copy
+            </li>
+            <li>
+              <strong>Monospace Font:</strong> Uses font-mono for better readability of code, tokens, and URLs
+            </li>
+            <li>
+              <strong>Clipboard API:</strong> Uses modern navigator.clipboard.writeText() for reliable copying
+            </li>
+            <li>
+              <strong>Accessible:</strong> Extends standard Input props for full accessibility support
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
