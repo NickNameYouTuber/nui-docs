@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatMessage } from '@nicorp/nui';
 
 export default function ChatMessagePage() {
+  const [selectedFramework, setSelectedFramework] = useState<string | undefined>();
+
   return (
     <div>
       <div className="mb-8">
@@ -36,15 +39,15 @@ export default function ChatMessagePage() {
           description="Incoming message with actions"
           code={`<ChatMessage
   variant="received"
-  avatar={{ src: "/ai-avatar.png", fallback: "AI" }}
-  content="React Hooks let you use state and other React features without writing a class. The most common hooks are useState and useEffect."
+  avatarFallback="AI"
+  content="React Hooks let you use state and other React features..."
   timestamp="12:35"
   actions={['copy', 'retry', 'like', 'dislike']}
 />`}
         >
           <ChatMessage
             variant="received"
-            avatar={{ fallback: "AI" }}
+            avatarFallback="AI"
             content="React Hooks let you use state and other React features without writing a class. The most common hooks are useState and useEffect."
             timestamp="12:35"
             actions={['copy', 'retry', 'like', 'dislike']}
@@ -56,7 +59,7 @@ export default function ChatMessagePage() {
           description="AI message that shows its thinking process"
           code={`<ChatMessage
   variant="received"
-  avatar={{ fallback: "AI" }}
+  avatarFallback="AI"
   content="The answer is 42."
   reasoning={{
     content: "The user is referencing The Hitchhiker's Guide...",
@@ -66,7 +69,7 @@ export default function ChatMessagePage() {
         >
           <ChatMessage
             variant="received"
-            avatar={{ fallback: "AI" }}
+            avatarFallback="AI"
             content="The answer is 42. This is, of course, the Answer to the Ultimate Question of Life, the Universe, and Everything."
             timestamp="12:36"
             reasoning={{
@@ -84,13 +87,14 @@ export default function ChatMessagePage() {
   variant="received"
   content="Here's the weather for Moscow."
   toolCalls={[
-    { name: "getWeather", args: { city: "Moscow" }, status: "success", result: "15°C" }
+    { name: "getWeather", args: { city: "Moscow" }, status: "success",
+      result: "15°C" }
   ]}
 />`}
         >
           <ChatMessage
             variant="received"
-            avatar={{ fallback: "AI" }}
+            avatarFallback="AI"
             content="The current weather in Moscow is 15°C with partly cloudy skies."
             timestamp="12:37"
             toolCalls={[
@@ -101,23 +105,28 @@ export default function ChatMessagePage() {
 
         <ComponentPreview
           title="With Follow-up"
-          description="AI asks a follow-up question with choices"
-          code={`<ChatMessage
+          description="AI asks a follow-up question with clickable choices"
+          code={`const [selected, setSelected] = useState<string>();
+
+<ChatMessage
   variant="received"
-  content="I can help with that! What framework are you using?"
+  avatarFallback="AI"
+  content="I can help! What framework are you using?"
   followUp={{
     question: "Select your framework:",
     options: [
       { id: "react", label: "React" },
       { id: "vue", label: "Vue" },
       { id: "svelte", label: "Svelte" }
-    ]
+    ],
+    selected,
   }}
+  onFollowUpSelect={(id) => setSelected(id)}
 />`}
         >
           <ChatMessage
             variant="received"
-            avatar={{ fallback: "AI" }}
+            avatarFallback="AI"
             content="I can help with that! What framework are you using?"
             timestamp="12:38"
             followUp={{
@@ -127,7 +136,9 @@ export default function ChatMessagePage() {
                 { id: 'vue', label: 'Vue' },
                 { id: 'svelte', label: 'Svelte' },
               ],
+              selected: selectedFramework,
             }}
+            onFollowUpSelect={(id) => setSelectedFramework(id)}
           />
         </ComponentPreview>
 
@@ -138,7 +149,7 @@ export default function ChatMessagePage() {
         >
           <ChatMessage
             variant="received"
-            avatar={{ fallback: "AI" }}
+            avatarFallback="AI"
             isLoading
           />
         </ComponentPreview>
@@ -147,23 +158,26 @@ export default function ChatMessagePage() {
           props={[
             { name: 'variant', type: '"sent" | "received"', default: '"received"', description: 'Message direction' },
             { name: 'content', type: 'ReactNode', description: 'Message text content' },
-            { name: 'avatar', type: '{ src?: string; fallback: string }', description: 'Avatar configuration' },
+            { name: 'avatar', type: 'string', description: 'Avatar image URL' },
+            { name: 'avatarFallback', type: 'string', description: 'Avatar fallback text (e.g. initials)' },
             { name: 'timestamp', type: 'string', description: 'Time string displayed with message' },
             { name: 'isLoading', type: 'boolean', description: 'Show typing/loading skeleton' },
             { name: 'status', type: '"sending" | "sent" | "delivered" | "read" | "error"', description: 'Message delivery status' },
             { name: 'actions', type: 'MessageActionType[]', description: 'Action buttons to show (copy, retry, edit, like, dislike, share)' },
-            { name: 'likeState', type: '"like" | "dislike" | null', description: 'Current like/dislike state' },
+            { name: 'textContent', type: 'string', description: 'Raw text content used by the copy action' },
+            { name: 'likeState', type: '"liked" | "disliked" | null', description: 'Current like/dislike state' },
             { name: 'reasoning', type: '{ content: string; isThinking?: boolean; duration?: number }', description: 'Reasoning/thinking block data' },
             { name: 'toolCalls', type: '{ name: string; args?: object; result?: string; status: string }[]', description: 'Tool call data' },
             { name: 'citations', type: 'Citation[]', description: 'Source citations' },
-            { name: 'followUp', type: '{ question: string; options: FollowUpOption[] }', description: 'Follow-up question data' },
+            { name: 'followUp', type: '{ question: string; options: FollowUpOption[]; selected?: string }', description: 'Follow-up question data' },
+            { name: 'onFollowUpSelect', type: '(optionId: string, label: string) => void', description: 'Called when a follow-up option is clicked' },
+            { name: 'onFollowUpFreeText', type: '(text: string) => void', description: 'Called when free-text follow-up is submitted' },
             { name: 'onCopy', type: '() => void', description: 'Copy action handler' },
             { name: 'onRetry', type: '() => void', description: 'Retry action handler' },
             { name: 'onEdit', type: '() => void', description: 'Edit action handler' },
             { name: 'onLike', type: '() => void', description: 'Like action handler' },
             { name: 'onDislike', type: '() => void', description: 'Dislike action handler' },
             { name: 'onShare', type: '() => void', description: 'Share action handler' },
-            { name: 'onFollowUpSelect', type: '(id: string) => void', description: 'Follow-up option selected handler' },
           ]}
         />
       </div>

@@ -74,6 +74,8 @@ import {
   Sparkles,
   ThumbsUp,
   Zap,
+  Globe,
+  Play,
 } from 'lucide-react';
 import { NUI_VERSION } from '../version';
 import logo from '../../nui-logo.png';
@@ -216,6 +218,13 @@ const navSections = [
       { label: 'AILoading', href: '/components/ai-loading', icon: Loader2 },
       { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText },
       { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb },
+      { label: 'NUIProvider', href: '/components/nui-provider', icon: Globe },
+    ],
+  },
+  {
+    title: 'Examples',
+    items: [
+      { label: 'AI Chat Demo', href: '/examples/ai-chat-demo', icon: Play },
     ],
   },
 ];
