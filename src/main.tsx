@@ -7,13 +7,32 @@ import App from './App';
 import './index.css';
 import faviconSmall from '../nui-logo-small.png';
 
+class ErrorBoundary extends React.Component<{children: React.ReactNode}, {error: Error | null}> {
+  state = { error: null as Error | null };
+  static getDerivedStateFromError(error: Error) { return { error }; }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{padding: '2rem', fontFamily: 'monospace', color: 'red', whiteSpace: 'pre-wrap'}}>
+          <h1>Runtime Error</h1>
+          <p>{this.state.error.message}</p>
+          <pre>{this.state.error.stack}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" attribute="class" enableSystem>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <ThemeProvider defaultTheme="dark" attribute="class" enableSystem>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 
