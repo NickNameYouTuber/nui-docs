@@ -88,7 +88,7 @@ import ChatHeaderPage from '~/pages/components/ChatHeaderPage';
 import SourceCitationPage from '~/pages/components/SourceCitationPage';
 import FilePreviewPage from '~/pages/components/FilePreviewPage';
 import ChatMessagePage from '~/pages/components/ChatMessagePage';
-import NUIProviderPage from '~/pages/components/NUIProviderPage';
+import TranslateProviderPage from '~/pages/components/TranslateProviderPage';
 import AIChatDemoPage from '~/pages/examples/AIChatDemoPage';
 
 export default function App() {
@@ -183,7 +183,7 @@ export default function App() {
         <Route path="/components/source-citation" element={<SourceCitationPage />} />
         <Route path="/components/file-preview" element={<FilePreviewPage />} />
         <Route path="/components/chat-message" element={<ChatMessagePage />} />
-        <Route path="/components/nui-provider" element={<NUIProviderPage />} />
+        <Route path="/components/translate-provider" element={<TranslateProviderPage />} />
         <Route path="/examples/ai-chat-demo" element={<AIChatDemoPage />} />
       </Route>
     </Routes>

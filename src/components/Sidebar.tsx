@@ -198,6 +198,12 @@ const navSections = [
     ],
   },
   {
+    title: 'i18n',
+    items: [
+      { label: 'TranslateProvider', href: '/components/translate-provider', icon: Globe },
+    ],
+  },
+  {
     title: 'AI & Chat',
     items: [
       { label: 'ChatBubble', href: '/components/chat-bubble', icon: MessageSquare },
@@ -218,7 +224,6 @@ const navSections = [
       { label: 'AILoading', href: '/components/ai-loading', icon: Loader2 },
       { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText },
       { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb },
-      { label: 'NUIProvider', href: '/components/nui-provider', icon: Globe },
     ],
   },
   {

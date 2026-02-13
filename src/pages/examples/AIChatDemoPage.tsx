@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import {
-  NUIProvider,
+  TranslateProvider,
   ChatContainer,
   ChatMessage,
   ChatInput,
@@ -241,7 +241,7 @@ export default function AIChatDemoPage() {
       </div>
 
       {/* Chat UI */}
-      <NUIProvider locale={locale}>
+      <TranslateProvider locale={locale}>
         <div className="rounded-2xl border border-border overflow-hidden bg-background" style={{ height: 700 }}>
           <div className="flex h-full">
             {/* Sidebar */}
@@ -349,14 +349,14 @@ export default function AIChatDemoPage() {
             </div>
           </div>
         </div>
-      </NUIProvider>
+      </TranslateProvider>
 
       {/* Feature list */}
       <div className="mt-8 rounded-xl border border-border p-6">
         <h3 className="text-lg font-semibold mb-4">Components Used</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {[
-            'NUIProvider', 'ChatContainer', 'ChatMessage', 'ChatInput',
+            'TranslateProvider', 'ChatContainer', 'ChatMessage', 'ChatInput',
             'ChatHeader', 'ConversationList', 'ModelSelector', 'ChatModeSelector',
             'PromptSuggestions', 'ReasoningBlock', 'ChatToolCall', 'SourceCitation',
             'ChatFollowUp', 'MessageActions', 'AILoading',
