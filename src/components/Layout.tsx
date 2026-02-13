@@ -31,17 +31,23 @@ export function Layout() {
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
         <header className="sticky top-0 z-30 flex items-center justify-between border-b border-border bg-background/95 backdrop-blur px-4 h-14 lg:px-6">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setMobileOpen(true)}
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setMobileOpen(true)}
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+            <img
+              src="/nui-logo.png"
+              alt="NUI Logo"
+              className="w-8 h-8 rounded-lg object-contain bg-primary p-1 hidden lg:block"
+              style={{ background: 'var(--primary)' }}
+            />
+          </div>
           <div className="flex-1" />
-
           <div className="flex items-center gap-2">
             <ModeToggle />
             <a

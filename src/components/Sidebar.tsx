@@ -147,9 +147,12 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 h-14 border-b border-border shrink-0">
-        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground font-bold text-sm">
-          N
-        </div>
+        <img
+          src="/nui-logo.png"
+          alt="NUI Logo"
+          className="w-8 h-8 rounded-lg object-contain bg-primary p-1"
+          style={{ background: 'var(--primary)' }}
+        />
         <div>
           <div className="font-semibold text-sm text-foreground">NUI</div>
           <div className="text-[10px] text-muted-foreground leading-none">Component Library</div>
