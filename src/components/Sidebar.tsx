@@ -148,10 +148,11 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 h-14 border-b border-border shrink-0">
         <img
-          src="/nui-logo.png"
+          src="./nui-logo.png"
           alt="NUI Logo"
           className="w-8 h-8 rounded-lg object-contain bg-primary p-1"
           style={{ background: 'var(--primary)' }}
+          onError={e => { e.currentTarget.src = './nui-logo-small.png'; }}
         />
         <div>
           <div className="font-semibold text-sm text-foreground">NUI</div>

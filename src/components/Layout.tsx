@@ -41,10 +41,11 @@ export function Layout() {
               <Menu className="h-5 w-5" />
             </Button>
             <img
-              src="/nui-logo.png"
+              src="./nui-logo.png"
               alt="NUI Logo"
               className="w-8 h-8 rounded-lg object-contain bg-primary p-1 hidden lg:block"
               style={{ background: 'var(--primary)' }}
+              onError={e => { e.currentTarget.src = './nui-logo-small.png'; }}
             />
           </div>
           <div className="flex-1" />
