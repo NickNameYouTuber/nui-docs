@@ -59,6 +59,8 @@ import {
   Code2,
 } from 'lucide-react';
 import { NUI_VERSION } from '../version';
+import logo from '../../nui-logo.png';
+import logoSmall from '../../nui-logo-small.png';
 
 const navSections = [
   {
@@ -148,11 +150,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 h-14 border-b border-border shrink-0">
         <img
-          src="./nui-logo.png"
+          src={logo}
           alt="NUI Logo"
-          className="w-8 h-8 rounded-lg object-contain bg-primary p-1"
-          style={{ background: 'var(--primary)' }}
-          onError={e => { e.currentTarget.src = './nui-logo-small.png'; }}
+          className="w-8 h-8 rounded-lg object-contain bg-primary/10 p-1"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).src = logoSmall; }}
         />
         <div>
           <div className="font-semibold text-sm text-foreground">NUI</div>

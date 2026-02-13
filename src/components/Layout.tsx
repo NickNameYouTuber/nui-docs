@@ -4,6 +4,8 @@ import { Sidebar } from './Sidebar';
 import { NUI_VERSION } from '../version';
 import { Menu, X } from 'lucide-react';
 import { Button, ModeToggle } from '@nicorp/nui';
+import logo from '../../nui-logo.png';
+import logoSmall from '../../nui-logo-small.png';
 
 export function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,11 +43,10 @@ export function Layout() {
               <Menu className="h-5 w-5" />
             </Button>
             <img
-              src="./nui-logo.png"
+              src={logo}
               alt="NUI Logo"
-              className="w-8 h-8 rounded-lg object-contain bg-primary p-1 hidden lg:block"
-              style={{ background: 'var(--primary)' }}
-              onError={e => { e.currentTarget.src = './nui-logo-small.png'; }}
+              className="w-8 h-8 rounded-lg object-contain bg-primary/10 p-1 hidden lg:block"
+              onError={(e) => { (e.currentTarget as HTMLImageElement).src = logoSmall; }}
             />
           </div>
           <div className="flex-1" />
