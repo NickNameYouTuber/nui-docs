@@ -38,7 +38,7 @@ export default function ScrollAreaPage() {
         <ComponentPreview
           title="Horizontal Scroll"
           description="Horizontal scrolling area for wide content"
-          code={`<ScrollArea className="w-full rounded-md border">
+          code={`<ScrollArea orientation="horizontal" className="w-full rounded-md border">
   <div className="flex w-max gap-4 p-4">
     {Array.from({ length: 20 }).map((_, i) => (
       <div key={i} className="h-32 w-32 rounded-lg border bg-muted flex items-center justify-center">
@@ -48,7 +48,7 @@ export default function ScrollAreaPage() {
   </div>
 </ScrollArea>`}
         >
-          <ScrollArea className="w-full rounded-md border">
+          <ScrollArea orientation="horizontal" className="w-full rounded-md border">
             <div className="flex w-max gap-4 p-4">
               {Array.from({ length: 20 }).map((_, i) => (
                 <div key={i} className="h-32 w-32 rounded-lg border bg-muted flex items-center justify-center shrink-0">
@@ -180,6 +180,12 @@ export default function ScrollAreaPage() {
                 type: 'ReactNode',
                 default: '-',
                 description: 'Content to be scrolled',
+              },
+              {
+                name: 'orientation',
+                type: "'vertical' | 'horizontal' | 'both'",
+                default: "'vertical'",
+                description: 'Which scrollbar(s) to display',
               },
             ]}
           />

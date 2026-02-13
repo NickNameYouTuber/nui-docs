@@ -1,7 +1,6 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
-import { Button, Toaster } from '@nicorp/nui';
-import { toast } from 'sonner';
+import { Button, Toaster, toast } from '@nicorp/nui';
 
 export default function SonnerPage() {
   return (
@@ -18,7 +17,7 @@ export default function SonnerPage() {
         <ComponentPreview
           title="Basic Toast"
           description="Simple toast notifications"
-          code={`import { toast } from 'sonner';
+          code={`import { toast } from '@nicorp/nui';
 
 <Button onClick={() => toast('Message sent successfully')}>
   Show Toast
@@ -44,7 +43,7 @@ export default function SonnerPage() {
         <ComponentPreview
           title="Toast Variants"
           description="Success, error, info, and warning toasts"
-          code={`import { toast } from 'sonner';
+          code={`import { toast } from '@nicorp/nui';
 
 <Button onClick={() => toast.success('Changes saved!')}>
   Success
@@ -81,7 +80,7 @@ export default function SonnerPage() {
         <ComponentPreview
           title="With Description"
           description="Toasts with additional description text"
-          code={`import { toast } from 'sonner';
+          code={`import { toast } from '@nicorp/nui';
 
 <Button
   onClick={() =>

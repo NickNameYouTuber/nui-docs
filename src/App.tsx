@@ -69,6 +69,13 @@ import TimelinePage from '~/pages/components/TimelinePage';
 import CodeBlockPage from '~/pages/components/CodeBlockPage';
 import JsonViewerPage from '~/pages/components/JsonViewerPage';
 import DrawerPage from '~/pages/components/DrawerPage';
+import CommandPage from '~/pages/components/CommandPage';
+import ChatBubblePage from '~/pages/components/ChatBubblePage';
+import ChatInputPage from '~/pages/components/ChatInputPage';
+import ChatContainerPage from '~/pages/components/ChatContainerPage';
+import AILoadingPage from '~/pages/components/AILoadingPage';
+import MarkdownRendererPage from '~/pages/components/MarkdownRendererPage';
+import PromptSuggestionsPage from '~/pages/components/PromptSuggestionsPage';
 
 export default function App() {
   return (
@@ -143,6 +150,13 @@ export default function App() {
         <Route path="/components/code-block" element={<CodeBlockPage />} />
         <Route path="/components/json-viewer" element={<JsonViewerPage />} />
         <Route path="/components/drawer" element={<DrawerPage />} />
+        <Route path="/components/command" element={<CommandPage />} />
+        <Route path="/components/chat-bubble" element={<ChatBubblePage />} />
+        <Route path="/components/chat-input" element={<ChatInputPage />} />
+        <Route path="/components/chat-container" element={<ChatContainerPage />} />
+        <Route path="/components/ai-loading" element={<AILoadingPage />} />
+        <Route path="/components/markdown-renderer" element={<MarkdownRendererPage />} />
+        <Route path="/components/prompt-suggestions" element={<PromptSuggestionsPage />} />
       </Route>
     </Routes>
   );

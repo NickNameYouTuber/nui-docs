@@ -57,6 +57,13 @@ import {
   FileJson,
   PanelLeft,
   Code2,
+  Search as SearchIcon,
+  MessageSquare,
+  SendHorizontal,
+  MessagesSquare,
+  Loader2,
+  FileText,
+  Lightbulb,
 } from 'lucide-react';
 import { NUI_VERSION } from '../version';
 import logo from '../../nui-logo.png';
@@ -139,7 +146,19 @@ const navSections = [
       { label: 'CodeBlock', href: '/components/code-block', icon: Code2 },
       { label: 'JsonViewer', href: '/components/json-viewer', icon: FileJson },
       { label: 'Drawer', href: '/components/drawer', icon: PanelLeft },
+      { label: 'Command', href: '/components/command', icon: SearchIcon },
       { label: 'ThemeProvider', href: '/components/theme-provider', icon: Sun },
+    ],
+  },
+  {
+    title: 'AI & Chat',
+    items: [
+      { label: 'ChatBubble', href: '/components/chat-bubble', icon: MessageSquare },
+      { label: 'ChatInput', href: '/components/chat-input', icon: SendHorizontal },
+      { label: 'ChatContainer', href: '/components/chat-container', icon: MessagesSquare },
+      { label: 'AILoading', href: '/components/ai-loading', icon: Loader2 },
+      { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText },
+      { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb },
     ],
   },
 ];

@@ -56,6 +56,13 @@ import {
   GitBranch,
   FileJson,
   PanelLeft,
+  Search,
+  MessageSquare,
+  SendHorizontal,
+  MessagesSquare,
+  Loader2,
+  FileText,
+  Lightbulb,
 } from 'lucide-react';
 
 const documented = [
@@ -123,7 +130,14 @@ const documented = [
   { label: 'CodeBlock', href: '/components/code-block', icon: Code2, category: 'Data' },
   { label: 'JsonViewer', href: '/components/json-viewer', icon: FileJson, category: 'Data' },
   { label: 'Drawer', href: '/components/drawer', icon: PanelLeft, category: 'Overlays' },
+  { label: 'Command', href: '/components/command', icon: Search, category: 'Overlays' },
   { label: 'ThemeProvider', href: '/components/theme-provider', icon: Sun, category: 'Theme' },
+  { label: 'ChatBubble', href: '/components/chat-bubble', icon: MessageSquare, category: 'AI' },
+  { label: 'ChatInput', href: '/components/chat-input', icon: SendHorizontal, category: 'AI' },
+  { label: 'ChatContainer', href: '/components/chat-container', icon: MessagesSquare, category: 'AI' },
+  { label: 'AILoading', href: '/components/ai-loading', icon: Loader2, category: 'AI' },
+  { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText, category: 'AI' },
+  { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb, category: 'AI' },
 ];
 
 const allComponents = [
@@ -146,7 +160,7 @@ const allComponents = [
   { name: 'Collapsible', icon: PanelLeftClose, category: 'Layout', doc: true },
   { name: 'ColorPicker', icon: Palette, category: 'Advanced', doc: true },
   { name: 'Combobox', icon: ChevronDown, category: 'Advanced', doc: true },
-  { name: 'Command', icon: Hash, category: 'Overlays' },
+  { name: 'Command', icon: Hash, category: 'Overlays', doc: true },
   { name: 'Container', icon: Square, category: 'Layout', doc: true },
   { name: 'ContextMenu', icon: MoreHorizontal, category: 'Overlays', doc: true },
   { name: 'CopyInput', icon: TextCursorInput, category: 'Advanced', doc: true },
@@ -195,9 +209,15 @@ const allComponents = [
   { name: 'ToggleGroup', icon: ToggleLeft, category: 'Atoms', doc: true },
   { name: 'Tooltip', icon: MessageCircle, category: 'Overlays', doc: true },
   { name: 'Typography', icon: Type, category: 'Atoms', doc: true },
+  { name: 'ChatBubble', icon: MessageSquare, category: 'AI', doc: true },
+  { name: 'ChatInput', icon: SendHorizontal, category: 'AI', doc: true },
+  { name: 'ChatContainer', icon: MessagesSquare, category: 'AI', doc: true },
+  { name: 'AILoading', icon: Loader2, category: 'AI', doc: true },
+  { name: 'MarkdownRenderer', icon: FileText, category: 'AI', doc: true },
+  { name: 'PromptSuggestions', icon: Lightbulb, category: 'AI', doc: true },
 ];
 
-const categories = ['All', 'Atoms', 'Advanced', 'Layout', 'Overlays', 'Navigation', 'Feedback', 'Data', 'Theme'];
+const categories = ['All', 'Atoms', 'Advanced', 'Layout', 'Overlays', 'Navigation', 'Feedback', 'Data', 'AI', 'Theme'];
 
 import { useState } from 'react';
 
