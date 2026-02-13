@@ -6,14 +6,17 @@ import {
   ChatBubbleMessage,
   ChatBubbleTimestamp,
 } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatBubblePage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatBubble</h1>
         <p className="text-xl text-muted-foreground">
-          Chat message bubbles with avatars, timestamps, and loading states for building AI & messaging interfaces.
+          {t('pages.chatBubble.desc')}
         </p>
       </div>
 

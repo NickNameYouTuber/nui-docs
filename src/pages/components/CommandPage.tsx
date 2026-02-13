@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   Command,
   CommandDialog,
@@ -23,6 +24,7 @@ import {
 } from 'lucide-react';
 
 export default function CommandPage() {
+  const { t } = useDocLang();
   const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -41,14 +43,14 @@ export default function CommandPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Command</h1>
         <p className="text-xl text-muted-foreground">
-          A command palette / search input powered by cmdk. Filter items, group actions, and open with a keyboard shortcut.
+          {t('pages.command.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Inline Command"
-          description="An inline command palette with groups and search"
+          title={t('pages.command.preview1Title')}
+          description={t('pages.command.preview1Desc')}
           code={`<Command className="rounded-lg border shadow-md">
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
@@ -129,8 +131,8 @@ export default function CommandPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Command Dialog (⌘K)"
-          description="Press ⌘K (or Ctrl+K) to open the command palette as a dialog"
+          title={t('pages.command.preview2Title')}
+          description={t('pages.command.preview2Desc')}
           code={`const [open, setOpen] = useState(false);
 
 useEffect(() => {

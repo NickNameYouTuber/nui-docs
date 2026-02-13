@@ -2,25 +2,27 @@ import { Skeleton } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function SkeletonPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Skeleton"
-        description="A placeholder component that displays an animated loading state while content is being fetched. Uses pulse animation to indicate loading."
-        badge="Atom"
+        description={t('pages.skeleton.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Skeleton"
+        title={t('pages.skeleton.preview1Title')}
         code={`<Skeleton className="h-4 w-64" />`}
       >
         <Skeleton className="h-4 w-64" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="Skeleton Variants"
+        title={t('pages.skeleton.preview2Title')}
         code={`<div className="space-y-2">
   <Skeleton className="h-4 w-full" />
   <Skeleton className="h-4 w-3/4" />
@@ -35,7 +37,7 @@ export function SkeletonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Card Skeleton"
+        title={t('pages.skeleton.preview3Title')}
         code={`<div className="rounded-lg border border-border p-4 space-y-3">
   <Skeleton className="h-12 w-12 rounded-full" />
   <div className="space-y-2">
@@ -54,7 +56,7 @@ export function SkeletonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="List Skeleton"
+        title={t('pages.skeleton.preview4Title')}
         code={`<div className="space-y-3">
   {[1, 2, 3].map((i) => (
     <div key={i} className="flex items-center gap-3">
@@ -81,7 +83,7 @@ export function SkeletonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Table Skeleton"
+        title={t('pages.skeleton.preview5Title')}
         code={`<div className="rounded-lg border border-border overflow-hidden">
   <div className="p-4 border-b border-border">
     <Skeleton className="h-4 w-32" />

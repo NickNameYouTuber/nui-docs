@@ -1,3 +1,5 @@
+import { useDocLang } from '../i18n';
+
 interface Prop {
   name: string;
   type: string;
@@ -11,18 +13,19 @@ interface PropsTableProps {
   props: Prop[];
 }
 
-export function PropsTable({ title = 'Props', props }: PropsTableProps) {
+export function PropsTable({ title, props }: PropsTableProps) {
+  const { t } = useDocLang();
   return (
     <div className="mb-8">
-      <h3 className="text-lg font-semibold mb-3">{title}</h3>
+      <h3 className="text-lg font-semibold mb-3">{title ?? t('chrome.props')}</h3>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-muted/50">
-              <th className="px-4 py-2.5 text-left font-medium text-foreground">Prop</th>
-              <th className="px-4 py-2.5 text-left font-medium text-foreground">Type</th>
-              <th className="px-4 py-2.5 text-left font-medium text-foreground">Default</th>
-              <th className="px-4 py-2.5 text-left font-medium text-foreground">Description</th>
+              <th className="px-4 py-2.5 text-left font-medium text-foreground">{t('chrome.prop')}</th>
+              <th className="px-4 py-2.5 text-left font-medium text-foreground">{t('chrome.type')}</th>
+              <th className="px-4 py-2.5 text-left font-medium text-foreground">{t('chrome.default')}</th>
+              <th className="px-4 py-2.5 text-left font-medium text-foreground">{t('chrome.description')}</th>
             </tr>
           </thead>
           <tbody>

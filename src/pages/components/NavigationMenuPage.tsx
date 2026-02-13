@@ -1,5 +1,6 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,19 +12,20 @@ import {
 } from '@nicorp/nui';
 
 export default function NavigationMenuPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">NavigationMenu</h1>
         <p className="text-xl text-muted-foreground">
-          A complex dropdown navigation menu built with Radix UI featuring animated content and keyboard navigation.
+          {t('pages.navigationMenu.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Navigation"
-          description="Horizontal navigation with dropdown menus"
+          title={t('pages.navigationMenu.preview1Title')}
+          description={t('pages.navigationMenu.preview1Desc')}
           code={`<NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>
@@ -132,8 +134,8 @@ export default function NavigationMenuPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Rich Content Menu"
-          description="Grid layout with featured items"
+          title={t('pages.navigationMenu.preview2Title')}
+          description={t('pages.navigationMenu.preview2Desc')}
           code={`<NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>
@@ -219,8 +221,8 @@ export default function NavigationMenuPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With List Items"
-          description="Traditional list-based dropdown"
+          title={t('pages.navigationMenu.preview3Title')}
+          description={t('pages.navigationMenu.preview3Desc')}
           code={`<NavigationMenu>
   <NavigationMenuList>
     <NavigationMenuItem>

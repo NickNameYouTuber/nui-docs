@@ -2,18 +2,20 @@ import { Flex } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function FlexPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Flex"
-        description="A flexbox layout component with prop-based styling. Simplifies common flex patterns without writing className strings."
-        badge="Layout"
+        description={t('pages.flex.desc')}
+        badge={t('common.badgeLayout')}
       />
 
       <ComponentPreview
-        title="Direction: Row vs Column"
+        title={t('pages.flex.preview1Title')}
         code={`<Flex direction="row" gap={2}>
   <div>Item 1</div>
   <div>Item 2</div>
@@ -47,7 +49,7 @@ export function FlexPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Justify Content"
+        title={t('pages.flex.preview2Title')}
         code={`<Flex justify="start">Start</Flex>
 <Flex justify="center">Center</Flex>
 <Flex justify="end">End</Flex>

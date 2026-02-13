@@ -3,8 +3,8 @@ import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import {
   TranslateProvider,
+  useLocale,
   ChatInput,
-  ChatMessage,
   AILoading,
   Combobox,
   MultiSelect,
@@ -12,6 +12,70 @@ import {
   TagInput,
   FileUpload,
 } from '@nicorp/nui';
+
+/* ──────────────── inline demo dictionaries ──────────────── */
+
+const enMessages = {
+  sidebar: { home: 'Home', settings: 'Settings', otherProducts: 'Other products' },
+  profile: {
+    title: 'Profile',
+    save: 'Save changes',
+    changePassword: 'Change password',
+    greeting: 'Hello, {name}!',
+  },
+  buttons: { confirm: 'Confirm', cancel: 'Cancel', delete: 'Delete' },
+};
+
+const ruMessages = {
+  sidebar: { home: 'Главная', settings: 'Настройки', otherProducts: 'Другие продукты' },
+  profile: {
+    title: 'Профиль',
+    save: 'Сохранить изменения',
+    changePassword: 'Изменить пароль',
+    greeting: 'Привет, {name}!',
+  },
+  buttons: { confirm: 'Подтвердить', cancel: 'Отмена', delete: 'Удалить' },
+};
+
+/* ──────────────── small demo components ──────────────── */
+
+function ProfileCard() {
+  const { t } = useLocale();
+  return (
+    <div className="rounded-lg border border-border p-4 space-y-3">
+      <h3 className="text-lg font-semibold">{t('profile.title')}</h3>
+      <p className="text-sm text-muted-foreground">{t('profile.greeting', { name: 'Alex' })}</p>
+      <div className="flex gap-2">
+        <button className="px-3 py-1.5 text-sm rounded-md bg-primary text-primary-foreground">{t('profile.save')}</button>
+        <button className="px-3 py-1.5 text-sm rounded-md border border-border">{t('profile.changePassword')}</button>
+      </div>
+    </div>
+  );
+}
+
+function SidebarDemo() {
+  const { t } = useLocale();
+  return (
+    <ul className="space-y-1 text-sm">
+      <li className="px-3 py-1.5 rounded-md bg-accent">{t('sidebar.home')}</li>
+      <li className="px-3 py-1.5 rounded-md hover:bg-accent">{t('sidebar.settings')}</li>
+      <li className="px-3 py-1.5 rounded-md hover:bg-accent">{t('sidebar.otherProducts')}</li>
+    </ul>
+  );
+}
+
+function ActionButtons() {
+  const { t } = useLocale();
+  return (
+    <div className="flex gap-2">
+      <button className="px-3 py-1.5 text-sm rounded-md bg-primary text-primary-foreground">{t('buttons.confirm')}</button>
+      <button className="px-3 py-1.5 text-sm rounded-md border border-border">{t('buttons.cancel')}</button>
+      <button className="px-3 py-1.5 text-sm rounded-md bg-destructive text-destructive-foreground">{t('buttons.delete')}</button>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════ */
 
 export default function TranslateProviderPage() {
   const [locale, setLocale] = useState<'en' | 'ru'>('en');
@@ -22,145 +86,158 @@ export default function TranslateProviderPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">TranslateProvider</h1>
         <p className="text-xl text-muted-foreground">
-          Универсальный провайдер локализации для всей библиотеки NUI.
-          Оберните приложение — и все встроенные строки (плейсхолдеры, кнопки,
-          подсказки) переведутся на нужный язык.
+          Универсальная система i18n: переводите свои строки через JSON-словари
+          и получайте автоматическую локализацию всех NUI-компонентов.
         </p>
       </div>
 
       <div className="space-y-10">
 
-        {/* ═══════════ 1. Quick Start ═══════════ */}
+        {/* ═══════════ 1. Quick Start — JSON ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
           <h2 className="text-2xl font-bold">1. Быстрый старт</h2>
           <p className="text-muted-foreground">
-            Два встроенных языка: <code className="font-mono text-foreground">en</code> (по умолчанию)
-            и <code className="font-mono text-foreground">ru</code>.
-            Просто оберните приложение и передайте строку-код языка:
+            Создайте JSON-файлы с переводами, передайте их в <code className="font-mono text-foreground">messages</code>,
+            а язык — в <code className="font-mono text-foreground">locale</code>:
           </p>
+
+          <h3 className="text-lg font-semibold">Шаг 1 — JSON-словари</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <p className="text-xs text-muted-foreground mb-1 font-mono">locales/en.json</p>
+              <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
+{`{
+  "sidebar": {
+    "home": "Home",
+    "settings": "Settings",
+    "otherProducts": "Other products"
+  },
+  "profile": {
+    "title": "Profile",
+    "save": "Save changes",
+    "changePassword": "Change password",
+    "greeting": "Hello, {name}!"
+  },
+  "buttons": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  }
+}`}
+              </pre>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1 font-mono">locales/ru.json</p>
+              <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
+{`{
+  "sidebar": {
+    "home": "Главная",
+    "settings": "Настройки",
+    "otherProducts": "Другие продукты"
+  },
+  "profile": {
+    "title": "Профиль",
+    "save": "Сохранить изменения",
+    "changePassword": "Изменить пароль",
+    "greeting": "Привет, {name}!"
+  },
+  "buttons": {
+    "confirm": "Подтвердить",
+    "cancel": "Отмена",
+    "delete": "Удалить"
+  }
+}`}
+              </pre>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold mt-2">Шаг 2 — Подключение</h3>
           <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
 {`import { TranslateProvider } from '@nicorp/nui';
+import en from './locales/en.json';
+import ru from './locales/ru.json';
 
 function App() {
+  const [lang, setLang] = useState('ru');
+
   return (
-    <TranslateProvider locale="ru">
-      {/* Все компоненты NUI внутри будут на русском */}
+    <TranslateProvider locale={lang} messages={{ en, ru }}>
       <MyApp />
     </TranslateProvider>
   );
 }`}
           </pre>
           <p className="text-muted-foreground text-sm">
-            Без <code className="font-mono text-foreground">TranslateProvider</code> все компоненты
-            отрисуются на английском — это значение по умолчанию.
+            Это всё! Все ваши строки и NUI-компоненты внутри будут на выбранном языке.
           </p>
         </section>
 
-        {/* ═══════════ 2. Creating a custom dictionary ═══════════ */}
+        {/* ═══════════ 2. useLocale() & t() ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
-          <h2 className="text-2xl font-bold">2. Свой словарь (Custom locale)</h2>
+          <h2 className="text-2xl font-bold">2. Хук useLocale() — функция t()</h2>
           <p className="text-muted-foreground">
-            Если нужен язык, отличный от <code className="font-mono text-foreground">en</code> / <code className="font-mono text-foreground">ru</code>,
-            или вы хотите переопределить отдельные строки — создайте объект с нужными ключами.
-            Все пропущенные ключи подтянутся из английского словаря.
-          </p>
-
-          <h3 className="text-lg font-semibold mt-2">Полный словарь (новый язык)</h3>
-          <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`// locales/es.ts  — испанский
-import type { NUILocale } from '@nicorp/nui';
-
-export const es: NUILocale = {
-  // ── Форма ──
-  combobox_placeholder:          "Seleccionar...",
-  combobox_searchPlaceholder:    "Buscar...",
-  combobox_empty:                "Sin resultados.",
-  multiselect_placeholder:       "Seleccionar...",
-  multiselect_searchPlaceholder: "Buscar...",
-  multiselect_empty:             "Sin resultados.",
-  multiselect_selected:          "{count} seleccionados",
-  datePicker_placeholder:        "Elegir fecha",
-  tagInput_placeholder:          "Añadir etiqueta...",
-  fileUpload_dragDrop:           "Arrastra archivos aquí o haz clic",
-  fileUpload_maxSize:            "Tamaño máximo: {size}",
-
-  // ── Таблица и навигация ──
-  dataTable_searchPlaceholder:   "Buscar...",
-  dataTable_noResults:           "Sin resultados.",
-  dataTable_pageOf:              "Página {page} de {total}",
-  dataTable_previous:            "Anterior",
-  dataTable_next:                "Siguiente",
-  pagination_previous:           "Anterior",
-  pagination_next:               "Siguiente",
-  pagination_morePages:          "Más páginas",
-  pagination_goToPrevious:       "Ir a la anterior",
-  pagination_goToNext:           "Ir a la siguiente",
-
-  // ── AI & Chat ──
-  chatInput_placeholder:         "Escribe un mensaje...",
-  chatInput_attachFile:          "Adjuntar archivo",
-  chatInput_stopGenerating:      "Detener generación",
-  chatInput_sendMessage:         "Enviar mensaje",
-  aiLoading_thinking:            "Pensando",
-  // ... остальные ключи AI (~20)
-
-  // ── Общие ──
-  common_close:    "Cerrar",
-  common_search:   "Buscar",
-  common_noResults:"Sin resultados",
-  common_previous: "Anterior",
-  common_next:     "Siguiente",
-  common_more:     "Más",
-  common_copyCode: "Copiar código",
-
-  // ... (полный список ключей — в таблице ниже)
-};`}
-          </pre>
-          <p className="text-muted-foreground text-sm mt-2">
-            Затем подключите:
+            В любом компоненте вызовите <code className="font-mono text-foreground">useLocale()</code> —
+            получите функцию <code className="font-mono text-foreground">t()</code> для перевода строк по
+            ключу через точку:
           </p>
           <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`import { es } from './locales/es';
+{`import { useLocale } from '@nicorp/nui';
 
-<TranslateProvider locale={es}>
-  <App />
-</TranslateProvider>`}
-          </pre>
+function ProfilePage() {
+  const { t, lang } = useLocale();
 
-          <h3 className="text-lg font-semibold mt-4">Частичный словарь (переопределение)</h3>
-          <p className="text-muted-foreground text-sm">
-            Можно указать только те ключи, которые хотите поменять.
-            Остальные возьмутся из английского:
-          </p>
-          <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`<TranslateProvider locale={{
-  combobox_placeholder:    "Выбрать фреймворк…",
-  datePicker_placeholder:  "Когда?",
-  chatInput_placeholder:   "Задай вопрос…",
-  chatInput_sendMessage:   "Отправить!",
-  fileUpload_dragDrop:     "Перетащите файлы сюда",
-}}>
-  <App />
-</TranslateProvider>`}
+  return (
+    <div>
+      <h1>{t('profile.title')}</h1>         {/* "Профиль" */}
+      <button>{t('profile.save')}</button>   {/* "Сохранить изменения" */}
+      <button>{t('buttons.cancel')}</button> {/* "Отмена" */}
+      <p>Current language: {lang}</p>        {/* "ru" */}
+    </div>
+  );
+}`}
           </pre>
         </section>
 
-        {/* ═══════════ 3. Dynamic switching ═══════════ */}
+        {/* ═══════════ 3. Variables ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
-          <h2 className="text-2xl font-bold">3. Переключение языка на лету</h2>
+          <h2 className="text-2xl font-bold">3. Переменные в строках</h2>
           <p className="text-muted-foreground">
-            Храните текущий язык в <code className="font-mono text-foreground">useState</code> и переключайте — все компоненты обновятся мгновенно:
+            Используйте <code className="font-mono text-foreground">{'{name}'}</code> в JSON — и передайте значения
+            вторым аргументом <code className="font-mono text-foreground">t()</code>:
+          </p>
+          <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
+{`// en.json
+{ "profile": { "greeting": "Hello, {name}!" } }
+
+// ru.json
+{ "profile": { "greeting": "Привет, {name}!" } }
+
+// Component
+const { t } = useLocale();
+t('profile.greeting', { name: 'Alex' });
+// → "Привет, Alex!" (если locale="ru")`}
+          </pre>
+        </section>
+
+        {/* ═══════════ 4. Language switching ═══════════ */}
+        <section className="rounded-xl border border-border p-6 space-y-4">
+          <h2 className="text-2xl font-bold">4. Переключение языка</h2>
+          <p className="text-muted-foreground">
+            Меняйте <code className="font-mono text-foreground">locale</code> через useState —
+            все <code className="font-mono text-foreground">t()</code> и NUI-компоненты обновятся мгновенно:
           </p>
           <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
 {`import { useState } from 'react';
 import { TranslateProvider } from '@nicorp/nui';
+import en from './locales/en.json';
+import ru from './locales/ru.json';
 
 function App() {
-  const [locale, setLocale] = useState<'en' | 'ru'>('en');
+  const [lang, setLang] = useState('en');
 
   return (
-    <TranslateProvider locale={locale}>
-      <select value={locale} onChange={e => setLocale(e.target.value as 'en' | 'ru')}>
+    <TranslateProvider locale={lang} messages={{ en, ru }}>
+      <select value={lang} onChange={e => setLang(e.target.value)}>
         <option value="en">English</option>
         <option value="ru">Русский</option>
       </select>
@@ -171,86 +248,90 @@ function App() {
           </pre>
         </section>
 
-        {/* ═══════════ 4. useTranslate hook ═══════════ */}
+        {/* ═══════════ 5. Fallback ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
-          <h2 className="text-2xl font-bold">4. Хук useTranslate()</h2>
+          <h2 className="text-2xl font-bold">5. Цепочка фоллбэков</h2>
           <p className="text-muted-foreground">
-            Если нужно прочитать строки локализации в своём компоненте — используйте хук.
-            Он возвращает объект со всеми ключами текущей локали:
+            Если ключ не найден в текущем языке, <code className="font-mono text-foreground">t()</code> ищет дальше:
+          </p>
+          <ol className="list-decimal list-inside text-sm space-y-1 text-muted-foreground">
+            <li>Текущий язык (например <code className="font-mono text-foreground">ru</code>)</li>
+            <li>Английский словарь (<code className="font-mono text-foreground">en</code>)</li>
+            <li>Сам ключ как строка (<code className="font-mono text-foreground">"profile.save"</code>)</li>
+          </ol>
+          <p className="text-muted-foreground text-sm mt-2">
+            Это значит, что можно переводить постепенно: непереведённые ключи покажут
+            английский текст, а не пустоту.
           </p>
           <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`import { useTranslate } from '@nicorp/nui';
+{`// en.json — полный словарь
+{ "profile": { "title": "Profile", "bio": "Biography" } }
 
-function SearchBar() {
-  const t = useTranslate();
+// ru.json — "bio" пока не переведён
+{ "profile": { "title": "Профиль" } }
 
-  return (
-    <input
-      placeholder={t.common_search}        // "Search" / "Поиск"
-      aria-label={t.common_search}
-    />
-  );
-}
-
-function UploadHint() {
-  const t = useTranslate();
-
-  return <p>{t.fileUpload_dragDrop}</p>;    // "Drag & drop..." / "Перетащите..."
-}`}
+// locale="ru"
+t('profile.title')  // → "Профиль"     (из ru)
+t('profile.bio')    // → "Biography"   (фоллбэк → en)
+t('profile.xyz')    // → "profile.xyz" (ключ не найден нигде)`}
           </pre>
         </section>
 
-        {/* ═══════════ 5. tpl() helper ═══════════ */}
+        {/* ═══════════ 6. useTranslate for NUI keys ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
-          <h2 className="text-2xl font-bold">5. Шаблоны с переменными — tpl()</h2>
+          <h2 className="text-2xl font-bold">6. Встроенные строки NUI — useTranslate()</h2>
           <p className="text-muted-foreground">
-            Некоторые ключи содержат плейсхолдеры вида <code className="font-mono text-foreground">{'{name}'}</code>.
-            Для подстановки значений используйте <code className="font-mono text-foreground">tpl()</code>:
+            NUI-компоненты (ChatInput, Combobox, DatePicker и т.д.) переводятся автоматически
+            через <code className="font-mono text-foreground">locale</code>.
+            Если нужно прочитать встроенные строки напрямую — используйте <code className="font-mono text-foreground">useTranslate()</code>:
           </p>
           <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
 {`import { useTranslate, tpl } from '@nicorp/nui';
 
-function SelectedCount({ count }: { count: number }) {
-  const t = useTranslate();
+function StatusBar() {
+  const nui = useTranslate();
 
-  // t.multiselect_selected = "{count} selected" (en)
-  //                        = "{count} выбрано"   (ru)
-  return <span>{tpl(t.multiselect_selected, { count })}</span>;
-  // → "3 selected" или "3 выбрано"
-}
-
-// Другие ключи с переменными:
-// t.reasoning_thoughtFor  → "Thought for {duration}s"
-// t.toolCall_calling      → "Calling {name}…"
-// t.fileUpload_maxSize    → "Max file size: {size}"
-// t.dataTable_pageOf      → "Page {page} of {total}"
-// t.filePreview_remove    → "Remove {name}"`}
+  return (
+    <div>
+      <span>{nui.common_search}</span>          {/* "Поиск" / "Search" */}
+      <span>{tpl(nui.multiselect_selected, { count: 3 })}</span>
+    </div>
+  );
+}`}
           </pre>
+          <p className="text-muted-foreground text-sm">
+            <code className="font-mono text-foreground">useTranslate()</code> — для системных строк NUI.<br />
+            <code className="font-mono text-foreground">useLocale()</code> — для ваших JSON-словарей.
+          </p>
         </section>
 
         {/* ═══════════ Live demos ═══════════ */}
         <h2 className="text-2xl font-bold pt-4">Живые примеры</h2>
 
-        {/* Demo 1 — Toggle */}
+        {/* Demo 1 — JSON user strings + NUI components */}
         <ComponentPreview
-          title="Переключение языка"
-          description="Кнопка переключает en ↔ ru — формы, файлы, AI-чат обновляются вместе"
+          title="JSON-словари + NUI-компоненты"
+          description="Переключатель en ↔ ru — ваши кнопки, профиль, сайдбар и NUI-формы переводятся вместе"
           code={`const [locale, setLocale] = useState<'en' | 'ru'>('en');
 
-<TranslateProvider locale={locale}>
-  <button onClick={() => setLocale(l => l === 'en' ? 'ru' : 'en')}>
-    Toggle
-  </button>
+const en = { sidebar: { home: "Home", ... }, profile: { title: "Profile", ... }, ... };
+const ru = { sidebar: { home: "Главная", ... }, profile: { title: "Профиль", ... }, ... };
+
+<TranslateProvider locale={locale} messages={{ en, ru }}>
+  <button onClick={() => setLocale(l => l === 'en' ? 'ru' : 'en')}>Toggle</button>
+
+  {/* Ваши компоненты — через t() */}
+  <ProfileCard />
+  <SidebarDemo />
+  <ActionButtons />
+
+  {/* NUI-компоненты — автоматически */}
   <Combobox options={[...]} />
   <DatePicker />
-  <TagInput />
-  <MultiSelect options={[...]} />
-  <FileUpload maxSize="10MB" />
   <ChatInput showAttach />
-  <AILoading variant="text" />
 </TranslateProvider>`}
         >
-          <TranslateProvider locale={locale}>
+          <TranslateProvider locale={locale} messages={{ en: enMessages, ru: ruMessages }}>
             <div className="space-y-4">
               <button
                 onClick={() => setLocale(l => l === 'en' ? 'ru' : 'en')}
@@ -259,7 +340,14 @@ function SelectedCount({ count }: { count: number }) {
                 {locale === 'en' ? '🇬🇧 English' : '🇷🇺 Русский'} — нажмите для переключения
               </button>
 
-              <h4 className="text-sm font-semibold text-muted-foreground pt-2">Формы</h4>
+              <h4 className="text-sm font-semibold text-muted-foreground pt-2">Ваши компоненты (JSON)</h4>
+              <div className="grid md:grid-cols-3 gap-4">
+                <SidebarDemo />
+                <ProfileCard />
+                <ActionButtons />
+              </div>
+
+              <h4 className="text-sm font-semibold text-muted-foreground pt-2">NUI-компоненты (авто)</h4>
               <div className="grid grid-cols-2 gap-4">
                 <Combobox options={[
                   { value: 'react', label: 'React' },
@@ -277,93 +365,60 @@ function SelectedCount({ count }: { count: number }) {
                 ]} />
               </div>
               <FileUpload maxSize="10MB" />
-
-              <h4 className="text-sm font-semibold text-muted-foreground pt-2">AI Chat</h4>
               <ChatInput showAttach />
               <AILoading variant="text" />
             </div>
           </TranslateProvider>
         </ComponentPreview>
 
-        {/* Demo 2 — Partial overrides */}
-        <ComponentPreview
-          title="Частичный словарь"
-          description="Переопределены только 5 ключей — остальные на английском"
-          code={`<TranslateProvider locale={{
-  combobox_placeholder: "Pick a framework…",
-  datePicker_placeholder: "When?",
-  fileUpload_dragDrop: "Drop files here",
-  chatInput_placeholder: "Ask me anything…",
-  chatInput_sendMessage: "Go!",
-}}>
-  ...
-</TranslateProvider>`}
-        >
-          <TranslateProvider locale={{
-            combobox_placeholder: "Pick a framework…",
-            datePicker_placeholder: "When?",
-            fileUpload_dragDrop: "Drop files here",
-            chatInput_placeholder: "Ask me anything…",
-            chatInput_sendMessage: "Go!",
-          }}>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <Combobox options={[
-                  { value: '1', label: 'React' },
-                  { value: '2', label: 'Vue' },
-                ]} />
-                <DatePicker />
-              </div>
-              <FileUpload />
-              <ChatInput />
-            </div>
-          </TranslateProvider>
-        </ComponentPreview>
+        {/* ═══════════ Props ═══════════ */}
+        <PropsTable
+          props={[
+            {
+              name: 'locale',
+              type: '"en" | "ru" | string | Partial<NUILocale>',
+              default: '"en"',
+              description: 'Код языка (строка) или объект-словарь для NUI-компонентов. Определяет текущий язык для messages.'
+            },
+            {
+              name: 'messages',
+              type: 'Record<string, MessageDictionary>',
+              default: '{}',
+              description: 'JSON-словари переводов, ключ — код языка. Пример: { en: enJson, ru: ruJson }.'
+            },
+            {
+              name: 'children',
+              type: 'ReactNode',
+              description: 'Дерево компонентов, которое получит контекст локализации'
+            },
+          ]}
+        />
 
-        {/* Demo 3 — Russian */}
-        <ComponentPreview
-          title="Русский язык"
-          description="locale='ru' — все строки на русском"
-          code={`<TranslateProvider locale="ru">
-  <Combobox options={[...]} />
-  <DatePicker />
-  <FileUpload maxSize="5MB" />
-  <ChatMessage content="Привет!" />
-  <ChatInput showAttach />
-</TranslateProvider>`}
-        >
-          <TranslateProvider locale="ru">
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <Combobox options={[
-                  { value: '1', label: 'Вариант A' },
-                  { value: '2', label: 'Вариант B' },
-                ]} />
-                <DatePicker />
-              </div>
-              <FileUpload maxSize="5MB" />
-              <ChatMessage
-                variant="received"
-                avatarFallback="ИИ"
-                content="Привет! Чем могу помочь?"
-                timestamp="14:20"
-                actions={['copy', 'retry', 'like', 'dislike']}
-              />
-              <ChatInput showAttach />
-            </div>
-          </TranslateProvider>
-        </ComponentPreview>
+        {/* ═══════════ Exports ═══════════ */}
+        <section className="rounded-xl border border-border p-6">
+          <h3 className="text-lg font-semibold mb-3">Экспорты</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li><code className="text-foreground font-mono">TranslateProvider</code> — компонент-провайдер (locale + messages)</li>
+            <li><code className="text-foreground font-mono">useLocale()</code> — хук, возвращает <code className="font-mono">{`{ t, lang }`}</code> для ваших JSON-переводов</li>
+            <li><code className="text-foreground font-mono">useTranslate()</code> — хук для встроенных строк NUI-компонентов</li>
+            <li><code className="text-foreground font-mono">tpl(template, vars)</code> — подстановка переменных в шаблоны NUI</li>
+            <li><code className="text-foreground font-mono">MessageDictionary</code> — тип JSON-словаря</li>
+            <li><code className="text-foreground font-mono">TFunction</code> — тип функции t()</li>
+            <li><code className="text-foreground font-mono">NUILocale</code> — интерфейс встроенных ключей NUI</li>
+            <li><code className="text-foreground font-mono">en</code> / <code className="text-foreground font-mono">ru</code> — встроенные словари NUI</li>
+          </ul>
+        </section>
 
-        {/* ═══════════ 6. Full key reference ═══════════ */}
+        {/* ═══════════ Built-in NUI keys (collapsed) ═══════════ */}
         <section className="rounded-xl border border-border p-6 space-y-4">
-          <h2 className="text-2xl font-bold">6. Все ключи локализации</h2>
+          <h2 className="text-2xl font-bold">Встроенные ключи NUI</h2>
           <p className="text-muted-foreground text-sm mb-4">
-            Тип <code className="font-mono text-foreground">NUILocale</code> содержит ~80 ключей.
-            Ключи с <code className="font-mono text-foreground">{'{}'}</code> — шаблоны, используйте <code className="font-mono text-foreground">tpl()</code>.
+            Эти ключи используются NUI-компонентами автоматически через <code className="font-mono text-foreground">locale</code>.
+            Вам не нужно их добавлять в JSON — они уже есть.
           </p>
 
           {/* Form keys */}
-          <details className="group" open>
+          <details className="group">
             <summary className="cursor-pointer font-semibold text-sm select-none">
               Формы — Combobox, MultiSelect, DatePicker, TagInput, FileUpload (12 ключей)
             </summary>
@@ -475,7 +530,7 @@ function SelectedCount({ count }: { count: number }) {
           {/* UI chrome keys */}
           <details className="group">
             <summary className="cursor-pointer font-semibold text-sm select-none">
-              UI — Dialog, Sheet, ModeToggle, CodeBlock (12 ключей)
+              UI — Common, ModeToggle (12 ключей)
             </summary>
             <div className="mt-2 overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -503,36 +558,6 @@ function SelectedCount({ count }: { count: number }) {
               </table>
             </div>
           </details>
-        </section>
-
-        {/* ═══════════ Props ═══════════ */}
-        <PropsTable
-          props={[
-            {
-              name: 'locale',
-              type: '"en" | "ru" | Partial<NUILocale>',
-              default: '"en"',
-              description: 'Код встроенного языка или объект-словарь. Пропущенные ключи берутся из английского.'
-            },
-            {
-              name: 'children',
-              type: 'ReactNode',
-              description: 'Дерево компонентов, которое получит контекст локализации'
-            },
-          ]}
-        />
-
-        {/* ═══════════ Exports ═══════════ */}
-        <section className="rounded-xl border border-border p-6">
-          <h3 className="text-lg font-semibold mb-3">Экспорты</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><code className="text-foreground font-mono">TranslateProvider</code> — компонент-провайдер</li>
-            <li><code className="text-foreground font-mono">useTranslate()</code> — хук, возвращает текущий словарь</li>
-            <li><code className="text-foreground font-mono">tpl(template, vars)</code> — подстановка переменных в шаблоны</li>
-            <li><code className="text-foreground font-mono">NUILocale</code> — TypeScript-интерфейс (~80 ключей)</li>
-            <li><code className="text-foreground font-mono">en</code> — английский словарь</li>
-            <li><code className="text-foreground font-mono">ru</code> — русский словарь</li>
-          </ul>
         </section>
 
       </div>

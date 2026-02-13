@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { StreamingText } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function StreamingTextPage() {
+  const { t } = useDocLang();
   const [key, setKey] = useState(0);
 
   const sampleText = "React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small, isolated pieces of code called components.";
@@ -14,14 +16,14 @@ export default function StreamingTextPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">StreamingText</h1>
         <p className="text-xl text-muted-foreground">
-          Typewriter animation effect for AI responses, rendering text character-by-character with cursor.
+          {t('pages.streamingText.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Default"
-          description="Text appears character by character with a blinking cursor"
+          title={t('pages.streamingText.preview1Title')}
+          description={t('pages.streamingText.preview1Desc')}
           code={`<StreamingText text="React is a JavaScript library..." />`}
         >
           <div className="text-sm">
@@ -36,8 +38,8 @@ export default function StreamingTextPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Speed"
-          description="Control how fast characters appear"
+          title={t('pages.streamingText.preview2Title')}
+          description={t('pages.streamingText.preview2Desc')}
           code={`<StreamingText text="Fast typing..." speed={5} />
 <StreamingText text="Slow typing..." speed={1} />`}
         >

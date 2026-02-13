@@ -3,6 +3,7 @@ import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ModelSelector } from '@nicorp/nui';
 import type { ModelOption } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const models: ModelOption[] = [
   { id: 'gpt-4o', name: 'GPT-4o', provider: 'OpenAI', icon: '🟢', description: 'Most capable OpenAI model', badges: ['Fast', 'Vision', '128K'] },
@@ -13,6 +14,7 @@ const models: ModelOption[] = [
 ];
 
 export default function ModelSelectorPage() {
+  const { t } = useDocLang();
   const [selected, setSelected] = useState('gpt-4o');
   const [compact, setCompact] = useState('gpt-4o');
 
@@ -21,14 +23,14 @@ export default function ModelSelectorPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ModelSelector</h1>
         <p className="text-xl text-muted-foreground">
-          Dropdown selector for choosing AI models with icons, providers, descriptions, and capability badges.
+          {t('pages.modelSelector.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Default"
-          description="Full model selector with search, badges, and descriptions"
+          title={t('pages.modelSelector.preview1Title')}
+          description={t('pages.modelSelector.preview1Desc')}
           code={`const models = [
   { id: 'gpt-4o', name: 'GPT-4o', provider: 'OpenAI', icon: '🟢', badges: ['Fast', 'Vision'] },
   { id: 'claude-4', name: 'Claude 4 Opus', provider: 'Anthropic', icon: '🟣', badges: ['Reasoning'] },
@@ -40,16 +42,16 @@ export default function ModelSelectorPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Compact Mode"
-          description="Shorter trigger showing only icon and name"
+          title={t('pages.modelSelector.preview2Title')}
+          description={t('pages.modelSelector.preview2Desc')}
           code={`<ModelSelector models={models} value={compact} onChange={setCompact} compact />`}
         >
           <ModelSelector models={models} value={compact} onChange={setCompact} compact />
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Placeholder"
-          description="No model selected initially"
+          title={t('pages.modelSelector.preview3Title')}
+          description={t('pages.modelSelector.preview3Desc')}
           code={`<ModelSelector models={models} placeholder="Choose a model..." />`}
         >
           <ModelSelector models={models} placeholder="Choose a model..." />

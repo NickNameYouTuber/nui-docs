@@ -2,19 +2,22 @@ import { Alert, AlertDescription, AlertTitle } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '../../i18n';
 import { AlertTriangle, Info, CheckCircle, XCircle } from 'lucide-react';
 
 export function AlertPage() {
+  const { t } = useDocLang();
+
   return (
     <div>
       <PageHeader
         title="Alert"
-        description="Displays a callout for important messages and feedback, supporting multiple severity levels."
-        badge="Feedback"
+        description={t('pages.alert.desc')}
+        badge={t('common.badgeFeedback')}
       />
 
       <ComponentPreview
-        title="Default Alert"
+        title={t('pages.alert.defaultAlert')}
         code={`<Alert>
   <Info className="h-4 w-4" />
   <AlertTitle>Information</AlertTitle>
@@ -31,7 +34,7 @@ export function AlertPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Destructive Alert"
+        title={t('pages.alert.destructiveAlert')}
         code={`<Alert variant="destructive">
   <XCircle className="h-4 w-4" />
   <AlertTitle>Error</AlertTitle>
@@ -48,8 +51,8 @@ export function AlertPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Alert Examples"
-        description="Various alerts for different contexts."
+        title={t('pages.alert.alertExamples')}
+        description={t('pages.alert.examplesDesc')}
         code={`<Alert>
   <CheckCircle className="h-4 w-4" />
   <AlertTitle>Success</AlertTitle>

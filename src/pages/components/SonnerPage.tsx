@@ -1,22 +1,24 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Button, Toaster, toast } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function SonnerPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <Toaster />
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Sonner</h1>
         <p className="text-xl text-muted-foreground">
-          Beautiful toast notifications powered by Sonner library with theme-aware styling.
+          {t('pages.sonner.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Toast"
-          description="Simple toast notifications"
+          title={t('pages.sonner.preview1Title')}
+          description={t('pages.sonner.preview1Desc')}
           code={`import { toast } from '@nicorp/nui';
 
 <Button onClick={() => toast('Message sent successfully')}>
@@ -41,8 +43,8 @@ export default function SonnerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Toast Variants"
-          description="Success, error, info, and warning toasts"
+          title={t('pages.sonner.preview2Title')}
+          description={t('pages.sonner.preview2Desc')}
           code={`import { toast } from '@nicorp/nui';
 
 <Button onClick={() => toast.success('Changes saved!')}>

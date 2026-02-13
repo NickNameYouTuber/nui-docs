@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { PageHeader } from '~/components/PageHeader';
 import { TagInput, Label } from '@nicorp/nui';
+import { useDocLang } from '~/i18n';
 
 export default function TagInputPage() {
+  const { t } = useDocLang();
   const [tags1, setTags1] = useState<string[]>([]);
   const [tags2, setTags2] = useState<string[]>(['react', 'typescript', 'tailwind']);
   const [tags3, setTags3] = useState<string[]>(['javascript']);
@@ -11,17 +14,16 @@ export default function TagInputPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">TagInput</h1>
-        <p className="text-xl text-muted-foreground">
-          An input field for adding and managing multiple tags with keyboard navigation and removal.
-        </p>
-      </div>
+      <PageHeader
+        title="TagInput"
+        description={t('pages.tagInput.desc')}
+        badge={t('common.badgeAdvanced')}
+      />
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Tag Input"
-          description="Simple tag input for adding multiple values"
+          title={t('pages.tagInput.preview1Title')}
+          description={t('pages.tagInput.preview1Desc')}
           code={`const [tags, setTags] = useState<string[]>([]);
 
 <TagInput
@@ -38,8 +40,8 @@ export default function TagInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Default Tags"
-          description="Tag input with pre-existing tags"
+          title={t('pages.tagInput.preview2Title')}
+          description={t('pages.tagInput.preview2Desc')}
           code={`const [tags, setTags] = useState<string[]>(['react', 'typescript', 'tailwind']);
 
 <TagInput
@@ -56,8 +58,8 @@ export default function TagInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Tag input with a label for form fields"
+          title={t('pages.tagInput.preview3Title')}
+          description={t('pages.tagInput.preview3Desc')}
           code={`const [tags, setTags] = useState<string[]>(['javascript']);
 
 <div className="space-y-2">
@@ -80,8 +82,8 @@ export default function TagInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Max Tags Limit"
-          description="Limit the maximum number of tags"
+          title={t('pages.tagInput.preview4Title')}
+          description={t('pages.tagInput.preview4Desc')}
           code={`const [tags, setTags] = useState<string[]>(['design', 'frontend']);
 
 <TagInput
@@ -105,8 +107,8 @@ export default function TagInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Disabled State"
-          description="Tag input in disabled state"
+          title={t('pages.tagInput.preview5Title')}
+          description={t('pages.tagInput.preview5Desc')}
           code={`<TagInput
   values={['react', 'vue', 'angular']}
   disabled
@@ -121,8 +123,8 @@ export default function TagInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Width"
-          description="Tag input with custom width using className"
+          title={t('pages.tagInput.preview6Title')}
+          description={t('pages.tagInput.preview6Desc')}
           code={`const [tags, setTags] = useState<string[]>([]);
 
 <TagInput

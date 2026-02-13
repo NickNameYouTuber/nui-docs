@@ -251,35 +251,48 @@ const allComponents = [
   { name: 'ChatMessage', icon: LayoutList, category: 'AI', doc: true },
 ];
 
-const categories = ['All', 'Atoms', 'Advanced', 'Layout', 'Overlays', 'Navigation', 'Feedback', 'Data', 'AI', 'Theme'];
+const categories = [
+  { value: 'All', labelKey: 'comp.all' },
+  { value: 'Atoms', labelKey: 'comp.atoms' },
+  { value: 'Advanced', labelKey: 'comp.advanced' },
+  { value: 'Layout', labelKey: 'comp.layout' },
+  { value: 'Overlays', labelKey: 'comp.overlays' },
+  { value: 'Navigation', labelKey: 'comp.navigation' },
+  { value: 'Feedback', labelKey: 'comp.feedback' },
+  { value: 'Data', labelKey: 'comp.data' },
+  { value: 'AI', labelKey: 'comp.ai' },
+  { value: 'Theme', labelKey: 'comp.theme' },
+];
 
 import { useState } from 'react';
+import { useDocLang } from '../i18n';
 
 export function ComponentsPage() {
   const [filter, setFilter] = useState('All');
+  const { t } = useDocLang();
 
   const filtered = filter === 'All' ? allComponents : allComponents.filter(c => c.category === filter);
 
   return (
     <div>
       <PageHeader
-        title="Components"
-        description={`Browse all ${allComponents.length} components available in NUI. Components marked with a badge have detailed documentation pages.`}
+        title={t('comp.title')}
+        description={t('comp.description', { count: allComponents.length })}
       />
 
       {/* Category filter */}
       <div className="flex flex-wrap gap-1.5 mb-6">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => setFilter(cat)}
+            key={cat.value}
+            onClick={() => setFilter(cat.value)}
             className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-              filter === cat
+              filter === cat.value
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'bg-transparent text-muted-foreground border-border hover:text-foreground hover:border-foreground/30'
             }`}
           >
-            {cat}
+            {t(cat.labelKey)}
           </button>
         ))}
       </div>
@@ -300,7 +313,7 @@ export function ComponentsPage() {
               <comp.icon className="h-4 w-4 shrink-0 text-muted-foreground" />
               <span className="text-sm font-medium truncate">{comp.name}</span>
               {hasDoc && (
-                <Badge variant="secondary" className="ml-auto text-[9px] shrink-0">docs</Badge>
+                <Badge variant="secondary" className="ml-auto text-[9px] shrink-0">{t('comp.docs')}</Badge>
               )}
             </div>
           );

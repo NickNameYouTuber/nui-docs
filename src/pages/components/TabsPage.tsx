@@ -2,18 +2,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent } from '@ni
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function TabsPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <PageHeader
         title="Tabs"
-        description="An accessible tabs component for switching between content panels. Built on Radix UI Tabs."
+        description={t('pages.tabs.desc')}
         badge="Navigation"
       />
 
       <ComponentPreview
-        title="Basic Tabs"
+        title={t('pages.tabs.basicTabs')}
         code={`<Tabs defaultValue="overview">
   <TabsList>
     <TabsTrigger value="overview">Overview</TabsTrigger>

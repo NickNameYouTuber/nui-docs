@@ -3,18 +3,21 @@ import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
 import { Plus, Settings, Trash2 } from 'lucide-react';
+import { useDocLang } from '~/i18n';
 
 export function TooltipPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <PageHeader
         title="Tooltip"
-        description="A popup that displays information related to an element on hover or focus. Built on Radix UI Tooltip."
+        description={t('pages.tooltip.desc')}
         badge="Overlay"
       />
 
       <ComponentPreview
-        title="Basic Tooltip"
+        title={t('pages.tooltip.basicTooltip')}
         code={`<TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
@@ -39,7 +42,8 @@ export function TooltipPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Tooltip Positions"
+        title={t('pages.tooltip.positions')}
+        description={t('pages.tooltip.positionsDesc')}
         code={`<Tooltip>
   <TooltipTrigger asChild>
     <Button variant="outline">Top</Button>
@@ -71,7 +75,7 @@ export function TooltipPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Icon Button with Tooltip"
+        title={t('pages.tooltip.withIcon')}
         code={`<Tooltip>
   <TooltipTrigger asChild>
     <Button variant="ghost" size="icon">

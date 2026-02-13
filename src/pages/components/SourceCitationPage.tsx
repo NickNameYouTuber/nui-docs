@@ -1,6 +1,7 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { SourceCitation, CitationBadge } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const citations = [
   { index: 1, title: 'React Documentation — useEffect', url: 'https://react.dev/reference/react/useEffect', snippet: 'useEffect is a React Hook that lets you synchronize a component with an external system.' },
@@ -9,19 +10,20 @@ const citations = [
 ];
 
 export default function SourceCitationPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">SourceCitation</h1>
         <p className="text-xl text-muted-foreground">
-          Inline citation badges and footer source cards for AI-generated content with references.
+          {t('pages.sourceCitation.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Inline Badges"
-          description="Superscript citation badges shown inline with text"
+          title={t('pages.sourceCitation.preview1Title')}
+          description={t('pages.sourceCitation.preview1Desc')}
           code={`<p>
   React Hooks simplify state management <CitationBadge citation={citations[0]} />
   and data fetching can be done with Fetch API <CitationBadge citation={citations[1]} />
@@ -40,8 +42,8 @@ export default function SourceCitationPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Footer Citations"
-          description="Source list displayed at the bottom of a message"
+          title={t('pages.sourceCitation.preview2Title')}
+          description={t('pages.sourceCitation.preview2Desc')}
           code={`<SourceCitation citations={citations} variant="footer" />`}
         >
           <SourceCitation citations={citations} variant="footer" />

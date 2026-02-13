@@ -3,8 +3,10 @@ import { Progress, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function ProgressPage() {
+  const { t } = useDocLang();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -22,19 +24,19 @@ export function ProgressPage() {
     <div>
       <PageHeader
         title="Progress"
-        description="A visual indicator for task completion or loading progress. Displays a horizontal bar with customizable fill level from 0 to 100. Built on Radix UI Progress."
-        badge="Atom"
+        description={t('pages.progress.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Progress"
+        title={t('pages.progress.preview1Title')}
         code={`<Progress value={60} />`}
       >
         <Progress value={60} className="w-full max-w-md" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Label and Value"
+        title={t('pages.progress.preview2Title')}
         code={`<div className="space-y-2 w-full max-w-md">
   <div className="flex justify-between text-sm">
     <Label>Loading...</Label>

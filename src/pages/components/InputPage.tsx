@@ -3,26 +3,28 @@ import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
 import { Search, Mail } from 'lucide-react';
+import { useDocLang } from '~/i18n';
 
 export function InputPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Input"
-        description="A text input field with multiple visual variants and sizes. Supports all native input attributes."
-        badge="Atom"
+        description={t('pages.input.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Default"
+        title={t('pages.input.preview1Title')}
         code={`<Input placeholder="Enter your email..." />`}
       >
         <Input placeholder="Enter your email..." className="max-w-sm" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="Variants"
-        description="Visual variants: default, filled, glow, and ghost."
+        title={t('pages.input.preview2Title')}
+        description={t('pages.input.preview2Desc')}
         code={`<Input variant="default" placeholder="Default" />
 <Input variant="filled" placeholder="Filled" />
 <Input variant="glow" placeholder="Glow" />
@@ -37,7 +39,7 @@ export function InputPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Sizes"
+        title={t('pages.input.preview3Title')}
         code={`<Input inputSize="sm" placeholder="Small" />
 <Input inputSize="default" placeholder="Default" />
 <Input inputSize="lg" placeholder="Large" />`}
@@ -50,14 +52,14 @@ export function InputPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Disabled"
+        title={t('pages.input.preview4Title')}
         code={`<Input disabled placeholder="Disabled input" />`}
       >
         <Input disabled placeholder="Disabled input" className="max-w-sm" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="With type"
+        title={t('pages.input.preview5Title')}
         code={`<Input type="email" placeholder="Email" />
 <Input type="password" placeholder="Password" />
 <Input type="number" placeholder="Amount" />`}

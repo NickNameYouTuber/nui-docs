@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { NumberInput, Label } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function NumberInputPage() {
+  const { t } = useDocLang();
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(5);
   const [value3, setValue3] = useState(10);
@@ -15,14 +17,14 @@ export default function NumberInputPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">NumberInput</h1>
         <p className="text-xl text-muted-foreground">
-          A numeric input with increment and decrement buttons for easy value adjustment.
+          {t('pages.numberInput.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Number Input"
-          description="Simple number input with +/- buttons"
+          title={t('pages.numberInput.preview1Title')}
+          description={t('pages.numberInput.preview1Desc')}
           code={`const [value, setValue] = useState(0);
 
 <NumberInput
@@ -37,7 +39,7 @@ export default function NumberInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Min and Max"
+          title={t('pages.numberInput.preview2Title')}
           description="Number input with value constraints"
           code={`const [value, setValue] = useState(5);
 

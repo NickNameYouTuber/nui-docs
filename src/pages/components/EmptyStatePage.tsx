@@ -2,29 +2,31 @@ import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { EmptyState, Button } from '@nicorp/nui';
 import { Inbox, Search, Database, FolderOpen, Package, FileText, Image } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function EmptyStatePage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">EmptyState</h1>
         <p className="text-xl text-muted-foreground">
-          A simple component for displaying empty states with optional icon, title, description, and action.
+          {t('pages.emptyState.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Empty State"
-          description="Simple empty state with title only"
+          title={t('pages.emptyState.preview1Title')}
+          description={t('pages.emptyState.preview1Desc')}
           code={`<EmptyState title="No items found" />`}
         >
           <EmptyState title="No items found" />
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Description"
-          description="Empty state with additional context"
+          title={t('pages.emptyState.preview2Title')}
+          description={t('pages.emptyState.preview2Desc')}
           code={`<EmptyState
   title="No items yet"
   description="Get started by creating your first item"
@@ -37,8 +39,8 @@ export default function EmptyStatePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Icon"
-          description="Using lucide-react icon"
+          title={t('pages.emptyState.preview3Title')}
+          description={t('pages.emptyState.preview3Desc')}
           code={`import { Inbox } from 'lucide-react';
 
 <EmptyState
@@ -55,8 +57,8 @@ export default function EmptyStatePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Action Button"
-          description="Empty state with call-to-action"
+          title={t('pages.emptyState.preview4Title')}
+          description={t('pages.emptyState.preview4Desc')}
           code={`import { Database } from 'lucide-react';
 
 <EmptyState

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { PageHeader } from '~/components/PageHeader';
 import { TimePicker, Label } from '@nicorp/nui';
+import { useDocLang } from '~/i18n';
 
 export default function TimePickerPage() {
+  const { t } = useDocLang();
   const [time1, setTime1] = useState({ hours: 9, minutes: 30 });
   const [time2, setTime2] = useState({ hours: 14, minutes: 45 });
   const [time3, setTime3] = useState({ hours: 10, minutes: 0 });
@@ -11,17 +14,16 @@ export default function TimePickerPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">TimePicker</h1>
-        <p className="text-xl text-muted-foreground">
-          A time picker component with scrollable hour and minute lists, supporting both 12-hour and 24-hour formats.
-        </p>
-      </div>
+      <PageHeader
+        title="TimePicker"
+        description={t('pages.timePicker.desc')}
+        badge={t('common.badgeAdvanced')}
+      />
 
       <div className="space-y-8">
         <ComponentPreview
-          title="12-Hour Format"
-          description="Default time picker with AM/PM toggle"
+          title={t('pages.timePicker.preview1Title')}
+          description={t('pages.timePicker.preview1Desc')}
           code={`const [time, setTime] = useState({ hours: 9, minutes: 30 })
 
 <TimePicker
@@ -36,8 +38,8 @@ export default function TimePickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="24-Hour Format"
-          description="Time picker with 24-hour format (military time)"
+          title={t('pages.timePicker.preview2Title')}
+          description={t('pages.timePicker.preview2Desc')}
           code={`const [time, setTime] = useState({ hours: 14, minutes: 45 })
 
 <TimePicker
@@ -54,8 +56,8 @@ export default function TimePickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Time picker with a label for form fields"
+          title={t('pages.timePicker.preview3Title')}
+          description={t('pages.timePicker.preview3Desc')}
           code={`const [time, setTime] = useState({ hours: 10, minutes: 0 })
 
 <div className="space-y-2">
@@ -76,8 +78,8 @@ export default function TimePickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Disabled State"
-          description="TimePicker in disabled state"
+          title={t('pages.timePicker.preview4Title')}
+          description={t('pages.timePicker.preview4Desc')}
           code={`<TimePicker
   value={{ hours: 12, minutes: 0 }}
   disabled
@@ -90,8 +92,8 @@ export default function TimePickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Width"
-          description="TimePicker with custom width using className"
+          title={t('pages.timePicker.preview5Title')}
+          description={t('pages.timePicker.preview5Desc')}
           code={`const [time, setTime] = useState({ hours: 16, minutes: 30 })
 
 <TimePicker

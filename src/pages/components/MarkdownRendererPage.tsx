@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { MarkdownRenderer } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const basicMarkdown = `# Hello World
 
@@ -49,8 +50,7 @@ async function Page() {
 
 > Server Components work seamlessly with Client Components.`;
 
-export default function MarkdownRendererPage() {
-  const [streamText, setStreamText] = useState('');
+export default function MarkdownRendererPage() {  const { t } = useDocLang();  const [streamText, setStreamText] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
 
   const startStreaming = () => {
@@ -74,14 +74,14 @@ export default function MarkdownRendererPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">MarkdownRenderer</h1>
         <p className="text-xl text-muted-foreground">
-          A lightweight, zero-dependency Markdown renderer. Supports headings, bold, italic, inline code, code blocks, lists, links, blockquotes, and horizontal rules.
+          {t('pages.markdownRenderer.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Full Markdown"
-          description="Renders a variety of Markdown elements"
+          title={t('pages.markdownRenderer.preview1Title')}
+          description={t('pages.markdownRenderer.preview1Desc')}
           code={`<MarkdownRenderer content={markdownString} />`}
         >
           <div className="rounded-lg border p-6 bg-card">
@@ -90,8 +90,8 @@ export default function MarkdownRendererPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Streaming Mode"
-          description="Progressively render content as it streams in — no layout shift"
+          title={t('pages.markdownRenderer.preview2Title')}
+          description={t('pages.markdownRenderer.preview2Desc')}
           code={`<MarkdownRenderer content={partialText} streaming />`}
         >
           <div className="space-y-3">

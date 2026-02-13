@@ -2,19 +2,22 @@ import { AspectRatio } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function AspectRatioPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <PageHeader
         title="Aspect Ratio"
-        description="A container that maintains a specific width-to-height ratio. Perfect for responsive images, videos, and embedded content. Built on Radix UI Aspect Ratio."
-        badge="Atom"
+        description={t('pages.aspectRatio.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="16:9 Video"
-        description="Common aspect ratio for widescreen video content."
+        title={t('pages.aspectRatio.preview1Title')}
+        description={t('pages.aspectRatio.preview1Desc')}
         code={`<AspectRatio ratio={16 / 9}>
   <img
     src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd"
@@ -35,8 +38,8 @@ export function AspectRatioPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="4:3 Photo"
-        description="Traditional photo aspect ratio."
+        title={t('pages.aspectRatio.preview2Title')}
+        description={t('pages.aspectRatio.preview2Desc')}
         code={`<AspectRatio ratio={4 / 3}>
   <img
     src="https://images.unsplash.com/photo-1535025183792-957014a3f86e"
@@ -57,8 +60,8 @@ export function AspectRatioPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="1:1 Square"
-        description="Perfect for avatars, icons, or Instagram-style images."
+        title={t('pages.aspectRatio.preview3Title')}
+        description={t('pages.aspectRatio.preview3Desc')}
         code={`<AspectRatio ratio={1}>
   <img
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"

@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useDocLang } from '../i18n';
 import {
   BookOpen,
   Palette,
@@ -81,18 +83,18 @@ import { NUI_VERSION } from '../version';
 import logo from '../../nui-logo.png';
 import logoSmall from '../../nui-logo-small.png';
 
-const navSections = [
+const getNavSections = (t: (k: string) => string) => [
   {
-    title: 'Overview',
+    title: t('nav.overview'),
     items: [
-      { label: 'Introduction', href: '/', icon: BookOpen },
-      { label: 'Getting Started', href: '/getting-started', icon: RectangleHorizontal },
-      { label: 'Theming', href: '/theming', icon: Palette },
-      { label: 'All Components', href: '/components', icon: LayoutGrid },
+      { label: t('nav.introduction'), href: '/', icon: BookOpen },
+      { label: t('nav.gettingStarted'), href: '/getting-started', icon: RectangleHorizontal },
+      { label: t('nav.theming'), href: '/theming', icon: Palette },
+      { label: t('nav.allComponents'), href: '/components', icon: LayoutGrid },
     ],
   },
   {
-    title: 'Atoms & Inputs',
+    title: t('nav.atomsInputs'),
     items: [
       { label: 'Button', href: '/components/button', icon: MousePointer },
       { label: 'Input', href: '/components/input', icon: TextCursorInput },
@@ -102,16 +104,16 @@ const navSections = [
       { label: 'Badge', href: '/components/badge', icon: Tag },
       { label: 'Avatar', href: '/components/avatar', icon: User },
       { label: 'Select', href: '/components/select', icon: ChevronDown },
-      { label: 'Checkbox & Switch', href: '/components/checkbox-switch', icon: ToggleLeft },
-      { label: 'Radio Group', href: '/components/radio-group', icon: CircleDot },
+      { label: t('nav.checkboxSwitch'), href: '/components/checkbox-switch', icon: ToggleLeft },
+      { label: t('nav.radioGroup'), href: '/components/radio-group', icon: CircleDot },
       { label: 'Toggle', href: '/components/toggle', icon: ToggleLeft },
-      { label: 'Toggle Group', href: '/components/toggle-group', icon: ToggleLeft },
+      { label: t('nav.toggleGroup'), href: '/components/toggle-group', icon: ToggleLeft },
       { label: 'Slider', href: '/components/slider', icon: SlidersHorizontal },
       { label: 'Typography', href: '/components/typography', icon: Type },
     ],
   },
   {
-    title: 'Advanced Inputs',
+    title: t('nav.advancedInputs'),
     items: [
       { label: 'MultiSelect', href: '/components/multiselect', icon: ListFilter },
       { label: 'Calendar', href: '/components/calendar', icon: Calendar },
@@ -127,7 +129,7 @@ const navSections = [
     ],
   },
   {
-    title: 'Layout',
+    title: t('nav.layout'),
     items: [
       { label: 'Container', href: '/components/container', icon: Box },
       { label: 'Flex', href: '/components/flex', icon: SplitSquareHorizontal },
@@ -143,12 +145,12 @@ const navSections = [
     ],
   },
   {
-    title: 'Overlays',
+    title: t('nav.overlays'),
     items: [
       { label: 'Dialog', href: '/components/dialog', icon: PanelTop },
       { label: 'AlertDialog', href: '/components/alert-dialog', icon: AlertCircle },
       { label: 'Tooltip', href: '/components/tooltip', icon: MessageCircle },
-      { label: 'Dropdown Menu', href: '/components/dropdown-menu', icon: ListChecks },
+      { label: t('nav.dropdownMenu'), href: '/components/dropdown-menu', icon: ListChecks },
       { label: 'Popover', href: '/components/popover', icon: MousePointerClick },
       { label: 'Sheet', href: '/components/sheet', icon: PanelRight },
       { label: 'ContextMenu', href: '/components/context-menu', icon: Menu },
@@ -158,7 +160,7 @@ const navSections = [
     ],
   },
   {
-    title: 'Navigation',
+    title: t('nav.navigation'),
     items: [
       { label: 'Tabs', href: '/components/tabs', icon: Layers },
       { label: 'Breadcrumb', href: '/components/breadcrumb', icon: MapPin },
@@ -168,7 +170,7 @@ const navSections = [
     ],
   },
   {
-    title: 'Feedback',
+    title: t('nav.feedback'),
     items: [
       { label: 'Alert', href: '/components/alert', icon: AlertTriangle },
       { label: 'Progress', href: '/components/progress', icon: Activity },
@@ -178,7 +180,7 @@ const navSections = [
     ],
   },
   {
-    title: 'Data Display',
+    title: t('nav.dataDisplay'),
     items: [
       { label: 'Table', href: '/components/table', icon: Table2 },
       { label: 'DataTable', href: '/components/data-table', icon: TableIcon },
@@ -192,19 +194,19 @@ const navSections = [
     ],
   },
   {
-    title: 'Theme',
+    title: t('nav.theme'),
     items: [
       { label: 'ThemeProvider', href: '/components/theme-provider', icon: Sun },
     ],
   },
   {
-    title: 'i18n',
+    title: t('nav.i18n'),
     items: [
       { label: 'TranslateProvider', href: '/components/translate-provider', icon: Globe },
     ],
   },
   {
-    title: 'AI & Chat',
+    title: t('nav.aiChat'),
     items: [
       { label: 'ChatBubble', href: '/components/chat-bubble', icon: MessageSquare },
       { label: 'ChatInput', href: '/components/chat-input', icon: SendHorizontal },
@@ -227,14 +229,17 @@ const navSections = [
     ],
   },
   {
-    title: 'Examples',
+    title: t('nav.examples'),
     items: [
-      { label: 'AI Chat Demo', href: '/examples/ai-chat-demo', icon: Play },
+      { label: t('nav.aiChatDemo'), href: '/examples/ai-chat-demo', icon: Play },
     ],
   },
 ];
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+  const { t } = useDocLang();
+  const navSections = useMemo(() => getNavSections(t), [t]);
+
   return (
     <div className="flex flex-col h-full">
       {/* Logo */}
@@ -247,7 +252,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         />
         <div>
           <div className="font-semibold text-sm text-foreground">NUI</div>
-          <div className="text-[10px] text-muted-foreground leading-none">Component Library</div>
+          <div className="text-[10px] text-muted-foreground leading-none">{t('chrome.componentLibrary')}</div>
         </div>
       </div>
 
@@ -286,11 +291,11 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       {/* Footer */}
       <div className="shrink-0 border-t border-border px-6 py-3">
         <p className="text-[11px] text-muted-foreground mb-1">
-          Built with{' '}
+          {t('chrome.builtWith')}{' '}
           <span className="font-medium text-foreground">@nicorp/nui v{NUI_VERSION}</span>
         </p>
         <p className="text-[10px] text-muted-foreground/70">
-          by <span className="font-medium text-foreground">NICorp</span>
+          {t('chrome.by')} <span className="font-medium text-foreground">NICorp</span>
         </p>
       </div>
     </div>

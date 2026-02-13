@@ -1,21 +1,24 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function AccordionPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Accordion</h1>
         <p className="text-xl text-muted-foreground">
-          A vertically stacked set of collapsible sections that allow users to hide or reveal content.
+          {t('pages.accordion.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Accordion"
-          description="Default single-open accordion with FAQ items"
+          title={t('pages.accordion.preview1Title')}
+          description={t('pages.accordion.preview1Desc')}
           code={`const [value, setValue] = useState("item-1")
 
 <Accordion type="single" collapsible value={value} onValueChange={setValue}>
@@ -66,8 +69,8 @@ export default function AccordionPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Multiple Open"
-          description="Allow multiple accordion items to be open simultaneously"
+          title={t('pages.accordion.preview2Title')}
+          description={t('pages.accordion.preview2Desc')}
           code={`<Accordion type="multiple" defaultValue={["item-1", "item-2"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Features</AccordionTrigger>
@@ -112,8 +115,8 @@ export default function AccordionPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Styled Variants"
-          description="Custom styling with className"
+          title={t('pages.accordion.preview3Title')}
+          description={t('pages.accordion.preview3Desc')}
           code={`<Accordion type="single" collapsible className="w-full rounded-lg border">
   <AccordionItem value="item-1" className="border-b-0 px-4">
     <AccordionTrigger className="hover:no-underline hover:text-primary">

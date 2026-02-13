@@ -8,21 +8,23 @@ import {
   TimelineContent,
 } from '@nicorp/nui';
 import { Check, Clock, Package, Truck } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function TimelinePage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Timeline</h1>
         <p className="text-xl text-muted-foreground">
-          A vertical timeline component for displaying chronological events.
+          {t('pages.timeline.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Timeline"
-          description="Simple timeline with icons"
+          title={t('pages.timeline.preview1Title')}
+          description={t('pages.timeline.preview1Desc')}
           code={`<Timeline>
   <TimelineItem>
     <TimelineConnector />
@@ -73,8 +75,8 @@ export default function TimelinePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Delivery Tracking"
-          description="Real-world order status timeline"
+          title={t('pages.timeline.preview2Title')}
+          description={t('pages.timeline.preview2Desc')}
           code={`<Timeline>
   <TimelineItem>
     <TimelineConnector />

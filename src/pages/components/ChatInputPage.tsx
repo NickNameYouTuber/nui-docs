@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatInput } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatInputPage() {
+  const { t } = useDocLang();
   const [sentMessages, setSentMessages] = useState<string[]>([]);
 
   return (
@@ -11,7 +13,7 @@ export default function ChatInputPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatInput</h1>
         <p className="text-xl text-muted-foreground">
-          Auto-resizing textarea with send button for chat and AI interfaces. Supports Enter to send and Shift+Enter for new lines.
+          {t('pages.chatInput.desc')}
         </p>
       </div>
 

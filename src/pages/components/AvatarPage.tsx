@@ -2,19 +2,22 @@ import { Avatar, AvatarImage, AvatarFallback } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '../../i18n';
 import { User } from 'lucide-react';
 
 export function AvatarPage() {
+  const { t } = useDocLang();
+
   return (
     <div>
       <PageHeader
         title="Avatar"
-        description="Displays user profile pictures with automatic fallback support. Built on Radix UI Avatar with image, fallback, and loading states."
-        badge="Atom"
+        description={t('pages.avatar.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Avatar"
+        title={t('pages.avatar.basicAvatar')}
         code={`<Avatar>
   <AvatarImage src="https://github.com/shadcn.png" alt="User" />
   <AvatarFallback>CN</AvatarFallback>
@@ -27,8 +30,8 @@ export function AvatarPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Fallback Only"
-        description="When no image is provided, the fallback content displays (e.g., initials)."
+        title={t('pages.avatar.fallbackOnly')}
+        description={t('pages.avatar.fallbackDesc')}
         code={`<Avatar>
   <AvatarFallback>JD</AvatarFallback>
 </Avatar>`}
@@ -47,7 +50,7 @@ export function AvatarPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Icon Fallback"
+        title={t('pages.avatar.withIconFallback')}
         code={`<Avatar>
   <AvatarImage src="/invalid-url.jpg" alt="User" />
   <AvatarFallback>
@@ -64,7 +67,7 @@ export function AvatarPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Different Sizes"
+        title={t('pages.avatar.differentSizes')}
         code={`<Avatar className="h-8 w-8">
   <AvatarFallback className="text-xs">SM</AvatarFallback>
 </Avatar>

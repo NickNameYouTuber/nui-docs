@@ -3,8 +3,10 @@ import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent, Button } from '@nicorp/nui';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function CollapsiblePage() {
+  const { t } = useDocLang();
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(true);
@@ -19,14 +21,14 @@ export default function CollapsiblePage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Collapsible</h1>
         <p className="text-xl text-muted-foreground">
-          An interactive component for hiding and showing content with smooth animations built on Radix UI.
+          {t('pages.collapsible.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Collapsible"
-          description="Simple collapsible with button trigger"
+          title={t('pages.collapsible.preview1Title')}
+          description={t('pages.collapsible.preview1Desc')}
           code={`const [open, setOpen] = useState(false);
 
 <Collapsible open={open} onOpenChange={setOpen}>
@@ -61,8 +63,8 @@ export default function CollapsiblePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Icon Indicator"
-          description="Collapsible with rotating chevron icon"
+          title={t('pages.collapsible.preview2Title')}
+          description={t('pages.collapsible.preview2Desc')}
           code={`const [open, setOpen] = useState(false);
 
 <Collapsible open={open} onOpenChange={setOpen}>

@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ScrollArea, Badge } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ScrollAreaPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ScrollArea</h1>
         <p className="text-xl text-muted-foreground">
-          A custom scrollable area with styled scrollbars built on Radix UI primitives.
+          {t('pages.scrollArea.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Vertical Scroll"
-          description="Simple vertical scrolling area with custom scrollbar"
+          title={t('pages.scrollArea.preview1Title')}
+          description={t('pages.scrollArea.preview1Desc')}
           code={`<ScrollArea className="h-72 w-full rounded-md border">
   <div className="p-4">
     {Array.from({ length: 50 }).map((_, i) => (
@@ -36,8 +38,8 @@ export default function ScrollAreaPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Horizontal Scroll"
-          description="Horizontal scrolling area for wide content"
+          title={t('pages.scrollArea.preview2Title')}
+          description={t('pages.scrollArea.preview2Desc')}
           code={`<ScrollArea orientation="horizontal" className="w-full rounded-md border">
   <div className="flex w-max gap-4 p-4">
     {Array.from({ length: 20 }).map((_, i) => (
@@ -60,8 +62,8 @@ export default function ScrollAreaPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Tags List"
-          description="Practical example with scrollable tag list"
+          title={t('pages.scrollArea.preview3Title')}
+          description={t('pages.scrollArea.preview3Desc')}
           code={`const tags = ['React', 'TypeScript', 'Tailwind', 'Next.js', ...];
 
 <ScrollArea className="h-48 w-full rounded-md border">
@@ -87,8 +89,8 @@ export default function ScrollAreaPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Content Preview"
-          description="Scrollable text content with limited height"
+          title={t('pages.scrollArea.preview4Title')}
+          description={t('pages.scrollArea.preview4Desc')}
           code={`<ScrollArea className="h-64 w-full rounded-md border">
   <div className="p-4 text-sm">
     <h3 className="font-semibold mb-2">Article Title</h3>
@@ -117,8 +119,8 @@ export default function ScrollAreaPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Chat Messages"
-          description="Scrollable message list example"
+          title={t('pages.scrollArea.preview5Title')}
+          description={t('pages.scrollArea.preview5Desc')}
           code={`<ScrollArea className="h-96 w-full rounded-md border">
   <div className="p-4 space-y-4">
     {messages.map((msg) => (

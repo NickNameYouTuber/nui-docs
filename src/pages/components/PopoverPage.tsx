@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   Popover,
   PopoverContent,
@@ -14,6 +15,7 @@ import { Settings, Filter } from 'lucide-react';
 import { format } from 'date-fns';
 
 export default function PopoverPage() {
+  const { t } = useDocLang();
   const [date, setDate] = useState<Date>();
   const [email, setEmail] = useState('');
   const [notifications, setNotifications] = useState(true);
@@ -23,14 +25,14 @@ export default function PopoverPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Popover</h1>
         <p className="text-xl text-muted-foreground">
-          A floating container that displays rich content on click, perfect for forms, menus, and settings.
+          {t('pages.popover.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Popover"
-          description="Simple popover with button trigger and text content"
+          title={t('pages.popover.preview1Title')}
+          description={t('pages.popover.preview1Desc')}
           code={`<Popover>
   <PopoverTrigger asChild>
     <Button variant="outline">Open Popover</Button>
@@ -61,8 +63,8 @@ export default function PopoverPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Form Fields in Popover"
-          description="Popover containing form inputs for quick data entry"
+          title={t('pages.popover.preview2Title')}
+          description={t('pages.popover.preview2Desc')}
           code={`const [email, setEmail] = useState('');
 
 <Popover>
@@ -121,8 +123,8 @@ export default function PopoverPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Date Picker Popover"
-          description="Calendar component inside a popover for date selection"
+          title={t('pages.popover.preview3Title')}
+          description={t('pages.popover.preview3Desc')}
           code={`const [date, setDate] = useState<Date>();
 
 <Popover>
@@ -157,8 +159,8 @@ export default function PopoverPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Settings Menu Popover"
-          description="Popover with multiple options and controls"
+          title={t('pages.popover.preview4Title')}
+          description={t('pages.popover.preview4Desc')}
           code={`const [notifications, setNotifications] = useState(true);
 
 <Popover>
@@ -247,8 +249,8 @@ export default function PopoverPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Filter Menu"
-          description="Popover for filtering options with multiple controls"
+          title={t('pages.popover.preview5Title')}
+          description={t('pages.popover.preview5Desc')}
           code={`<Popover>
   <PopoverTrigger asChild>
     <Button variant="outline">

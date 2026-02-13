@@ -3,8 +3,10 @@ import { Calendar, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function CalendarPage() {
+  const { t } = useDocLang();
   const [date1, setDate1] = useState<Date | undefined>(new Date());
   const [date2, setDate2] = useState<Date | undefined>();
 
@@ -18,19 +20,19 @@ export function CalendarPage() {
     <div>
       <PageHeader
         title="Calendar"
-        description="A date picker calendar with month navigation, keyboard controls, and customizable date selection. Built with date-fns for date manipulation."
-        badge="Atom"
+        description={t('pages.calendar.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Calendar"
+        title={t('pages.calendar.preview1Title')}
         code={`<Calendar mode="single" />`}
       >
         <Calendar mode="single" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="Controlled Calendar"
+        title={t('pages.calendar.preview2Title')}
         code={`const [date, setDate] = useState<Date | undefined>(new Date());
 
 <div className="space-y-2">
@@ -57,8 +59,8 @@ export function CalendarPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Disabled Dates"
-        description="Disable past dates or specific dates."
+        title={t('pages.calendar.preview3Title')}
+        description={t('pages.calendar.preview3Desc')}
         code={`const [date, setDate] = useState<Date | undefined>();
 
 const isPastDate = (date: Date) => {
@@ -86,7 +88,7 @@ const isPastDate = (date: Date) => {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Default Month"
+        title={t('pages.calendar.preview4Title')}
         code={`const futureDate = new Date();
 futureDate.setMonth(futureDate.getMonth() + 2);
 

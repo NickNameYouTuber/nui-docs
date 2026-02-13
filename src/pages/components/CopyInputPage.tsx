@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { CopyInput } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function CopyInputPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">CopyInput</h1>
         <p className="text-xl text-muted-foreground">
-          A read-only input field with a copy-to-clipboard button for easy sharing of text values.
+          {t('pages.copyInput.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Copy Input"
-          description="Simple copy input for sharing text"
+          title={t('pages.copyInput.preview1Title')}
+          description={t('pages.copyInput.preview1Desc')}
           code={`<CopyInput
   value="https://example.com/api/endpoint"
 />`}
@@ -26,8 +28,8 @@ export default function CopyInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Copy input with a descriptive label"
+          title={t('pages.copyInput.preview2Title')}
+          description={t('pages.copyInput.preview2Desc')}
           code={`<CopyInput
   label="API Endpoint"
   value="https://api.example.com/v1/users"
@@ -40,8 +42,8 @@ export default function CopyInputPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="API Key Example"
-          description="Common use case for API keys"
+          title={t('pages.copyInput.preview3Title')}
+          description={t('pages.copyInput.preview3Desc')}
           code={`<div className="space-y-4">
   <CopyInput
     label="Public Key"

@@ -6,6 +6,7 @@ import {
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 const invoices = [
   { invoice: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
@@ -21,16 +22,18 @@ function StatusBadge({ status }: { status: string }) {
 }
 
 export function TablePage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <PageHeader
         title="Table"
-        description="A responsive HTML table with styled headers, rows, and cells. For advanced features like sorting and filtering, see DataTable."
+        description={t('pages.table.desc')}
         badge="Data"
       />
 
       <ComponentPreview
-        title="Basic Table"
+        title={t('pages.table.basicTable')}
         code={`<Table>
   <TableCaption>A list of recent invoices</TableCaption>
   <TableHeader>

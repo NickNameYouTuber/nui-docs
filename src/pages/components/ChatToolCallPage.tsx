@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatToolCall } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatToolCallPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatToolCall</h1>
         <p className="text-xl text-muted-foreground">
-          Displays a tool/function call made by AI — shows name, arguments, status, and result.
+          {t('pages.chatToolCall.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Running"
-          description="Tool call currently executing"
+          title={t('pages.chatToolCall.preview1Title')}
+          description={t('pages.chatToolCall.preview1Desc')}
           code={`<ChatToolCall
   name="searchDatabase"
   args={{ query: "latest orders", limit: 10 }}
@@ -30,8 +32,8 @@ export default function ChatToolCallPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Success"
-          description="Completed tool call with result"
+          title={t('pages.chatToolCall.preview2Title')}
+          description={t('pages.chatToolCall.preview2Desc')}
           code={`<ChatToolCall
   name="getWeather"
   args={{ city: "Moscow", units: "metric" }}
@@ -48,8 +50,8 @@ export default function ChatToolCallPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Error"
-          description="Failed tool call with error message"
+          title={t('pages.chatToolCall.preview3Title')}
+          description={t('pages.chatToolCall.preview3Desc')}
           code={`<ChatToolCall
   name="executeQuery"
   args={{ sql: "SELECT * FROM users" }}
@@ -66,8 +68,8 @@ export default function ChatToolCallPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Default Open"
-          description="Start with details expanded"
+          title={t('pages.chatToolCall.preview4Title')}
+          description={t('pages.chatToolCall.preview4Desc')}
           code={`<ChatToolCall
   name="calculateRoute"
   args={{ from: "A", to: "B" }}

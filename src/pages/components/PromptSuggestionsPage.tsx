@@ -1,6 +1,7 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { PromptSuggestions } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const suggestions = [
   { title: 'Write a function', description: 'Generate a TypeScript utility function', prompt: 'Write a TypeScript debounce function' },
@@ -12,19 +13,20 @@ const suggestions = [
 ];
 
 export default function PromptSuggestionsPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">PromptSuggestions</h1>
         <p className="text-xl text-muted-foreground">
-          Grid of suggestion cards for AI chat interfaces. Users click a card to start a conversation with a pre-filled prompt.
+          {t('pages.promptSuggestions.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Two Columns (default)"
-          description="Grid of prompt suggestion cards"
+          title={t('pages.promptSuggestions.preview1Title')}
+          description={t('pages.promptSuggestions.preview1Desc')}
           code={`<PromptSuggestions
   suggestions={[
     { title: 'Write a function', description: 'Generate a utility', prompt: '...' },
@@ -42,8 +44,8 @@ export default function PromptSuggestionsPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Three Columns"
-          description="Wider layout with 3 columns"
+          title={t('pages.promptSuggestions.preview2Title')}
+          description={t('pages.promptSuggestions.preview2Desc')}
           code={`<PromptSuggestions columns={3} suggestions={...} onSelect={...} />`}
         >
           <PromptSuggestions
@@ -54,8 +56,8 @@ export default function PromptSuggestionsPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Single Column"
-          description="Stacked layout for narrow containers"
+          title={t('pages.promptSuggestions.preview3Title')}
+          description={t('pages.promptSuggestions.preview3Desc')}
           code={`<PromptSuggestions columns={1} suggestions={...} onSelect={...} />`}
         >
           <div className="max-w-sm mx-auto">

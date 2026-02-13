@@ -2,20 +2,23 @@ import { Button } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '../../i18n';
 import { Mail, Loader2, ChevronRight, Download } from 'lucide-react';
 
 export function ButtonPage() {
+  const { t } = useDocLang();
+
   return (
     <div>
       <PageHeader
         title="Button"
-        description="Displays a button or a component that looks like a button. Supports multiple variants, sizes, and icon configurations."
-        badge="Atom"
+        description={t('pages.button.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Variants"
-        description="All available button style variants."
+        title={t('common.variants')}
+        description={t('pages.button.variantsDesc')}
         code={`<Button variant="default">Default</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="destructive">Destructive</Button>
@@ -32,8 +35,8 @@ export function ButtonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Sizes"
-        description="Available size options from small to extra-large."
+        title={t('common.sizes')}
+        description={t('pages.button.sizesDesc')}
         code={`<Button size="sm">Small</Button>
 <Button size="default">Default</Button>
 <Button size="lg">Large</Button>
@@ -48,8 +51,8 @@ export function ButtonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Icon"
-        description="Combining buttons with icons for contextual actions."
+        title={t('common.withIcon')}
+        description={t('pages.button.withIconDesc')}
         code={`<Button>
   <Mail className="mr-2 h-4 w-4" /> Login with Email
 </Button>
@@ -66,8 +69,8 @@ export function ButtonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Loading State"
-        description="Use the disabled prop with a Loader2 icon to indicate loading."
+        title={t('common.loadingState')}
+        description={t('pages.button.loadingDesc')}
         code={`<Button disabled>
   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
   Please wait
@@ -79,8 +82,8 @@ export function ButtonPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Brand & Glow"
-        description="Special variants for marketing and attention-grabbing buttons."
+        title={t('pages.button.brandGlow')}
+        description={t('pages.button.brandGlowDesc')}
         code={`<Button variant="brand">Brand</Button>
 <Button variant="glow">Glow</Button>`}
       >

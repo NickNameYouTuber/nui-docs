@@ -2,18 +2,20 @@ import { Separator } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function SeparatorPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Separator"
-        description="A visual divider that separates content sections. Supports horizontal and vertical orientations. Built on Radix UI Separator."
-        badge="Atom"
+        description={t('pages.separator.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Horizontal Separator"
+        title={t('pages.separator.preview1Title')}
         code={`<div className="space-y-4">
   <p className="text-sm">Section One</p>
   <Separator />
@@ -28,7 +30,7 @@ export function SeparatorPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Vertical Separator"
+        title={t('pages.separator.preview2Title')}
         code={`<div className="flex items-center gap-4 h-8">
   <span className="text-sm">Item 1</span>
   <Separator orientation="vertical" />
@@ -47,7 +49,7 @@ export function SeparatorPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="In Menu Context"
+        title={t('pages.separator.preview3Title')}
         code={`<div className="w-64 p-3 rounded-lg border border-border">
   <div className="px-2 py-1.5 text-sm font-medium">Menu</div>
   <Separator className="my-2" />

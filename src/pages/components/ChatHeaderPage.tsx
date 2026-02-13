@@ -1,14 +1,17 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatHeader } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatHeaderPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatHeader</h1>
         <p className="text-xl text-muted-foreground">
-          Top bar for chat interfaces — shows model info, status, and action buttons.
+          {t('pages.chatHeader.desc')}
         </p>
       </div>
 

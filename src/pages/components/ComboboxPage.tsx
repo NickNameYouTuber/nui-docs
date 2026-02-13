@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Combobox, Label } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const frameworks = [
   { value: 'react', label: 'React' },
@@ -27,6 +28,7 @@ const countries = [
 ];
 
 export default function ComboboxPage() {
+  const { t } = useDocLang();
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('react');
   const [value3, setValue3] = useState('');
@@ -37,14 +39,14 @@ export default function ComboboxPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Combobox</h1>
         <p className="text-xl text-muted-foreground">
-          A searchable dropdown component for selecting from a list of options with keyboard navigation.
+          {t('pages.combobox.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Combobox"
-          description="Simple combobox with search functionality"
+          title={t('pages.combobox.preview1Title')}
+          description={t('pages.combobox.preview1Desc')}
           code={`const frameworks = [
   { value: 'react', label: 'React' },
   { value: 'vue', label: 'Vue' },
@@ -69,8 +71,8 @@ const [value, setValue] = useState('');
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Default Value"
-          description="Combobox with pre-selected value"
+          title={t('pages.combobox.preview2Title')}
+          description={t('pages.combobox.preview2Desc')}
           code={`const [value, setValue] = useState('react');
 
 <Combobox
@@ -89,8 +91,8 @@ const [value, setValue] = useState('');
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Combobox with a label for form fields"
+          title={t('pages.combobox.preview3Title')}
+          description={t('pages.combobox.preview3Desc')}
           code={`const [value, setValue] = useState('');
 
 <div className="space-y-2">
@@ -115,8 +117,8 @@ const [value, setValue] = useState('');
         </ComponentPreview>
 
         <ComponentPreview
-          title="Large Dataset"
-          description="Combobox with many options and search filter"
+          title={t('pages.combobox.preview4Title')}
+          description={t('pages.combobox.preview4Desc')}
           code={`const countries = [
   { value: 'us', label: 'United States' },
   { value: 'uk', label: 'United Kingdom' },
@@ -145,8 +147,8 @@ const [value, setValue] = useState('');
         </ComponentPreview>
 
         <ComponentPreview
-          title="Disabled State"
-          description="Combobox in disabled state"
+          title={t('pages.combobox.preview5Title')}
+          description={t('pages.combobox.preview5Desc')}
           code={`<Combobox
   options={frameworks}
   value="react"
@@ -163,8 +165,8 @@ const [value, setValue] = useState('');
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Width"
-          description="Combobox with custom width using className"
+          title={t('pages.combobox.preview6Title')}
+          description={t('pages.combobox.preview6Desc')}
           code={`const [value, setValue] = useState('');
 
 <Combobox

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { FilePreview } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const files = [
   { name: 'report.pdf', size: 2400000, type: 'application/pdf' },
@@ -12,6 +13,7 @@ const files = [
 ];
 
 export default function FilePreviewPage() {
+  const { t } = useDocLang();
   const [compactFiles, setCompactFiles] = useState(files.slice(0, 3));
   const [gridFiles, setGridFiles] = useState(files);
 
@@ -20,14 +22,14 @@ export default function FilePreviewPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">FilePreview</h1>
         <p className="text-xl text-muted-foreground">
-          File attachment preview — compact horizontal row or grid with thumbnails.
+          {t('pages.filePreview.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Compact"
-          description="Horizontal scrollable row of file chips"
+          title={t('pages.filePreview.preview1Title')}
+          description={t('pages.filePreview.preview1Desc')}
           code={`<FilePreview
   files={files}
   variant="compact"
@@ -47,8 +49,8 @@ export default function FilePreviewPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Grid"
-          description="Two-column grid with image thumbnails"
+          title={t('pages.filePreview.preview2Title')}
+          description={t('pages.filePreview.preview2Desc')}
           code={`<FilePreview
   files={files}
   variant="grid"
@@ -70,8 +72,8 @@ export default function FilePreviewPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Read Only"
-          description="Without remove buttons — for displaying received files"
+          title={t('pages.filePreview.preview3Title')}
+          description={t('pages.filePreview.preview3Desc')}
           code={`<FilePreview files={files} variant="compact" />`}
         >
           <FilePreview files={files.slice(0, 3)} variant="compact" />

@@ -14,21 +14,23 @@ import {
   Input,
 } from '@nicorp/nui';
 import { Menu, Filter, Bell, Settings } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function SheetPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Sheet</h1>
         <p className="text-xl text-muted-foreground">
-          A side panel that slides in from the edge of the screen, perfect for navigation, filters, and forms.
+          {t('pages.sheet.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Right Sidebar Navigation"
-          description="Default right-side sheet for navigation menu"
+          title={t('pages.sheet.preview1Title')}
+          description={t('pages.sheet.preview1Desc')}
           code={`<Sheet>
   <SheetTrigger asChild>
     <Button variant="outline">
@@ -93,8 +95,8 @@ export default function SheetPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Left Sidebar Filters"
-          description="Left-side sheet with filter controls"
+          title={t('pages.sheet.preview2Title')}
+          description={t('pages.sheet.preview2Desc')}
           code={`<Sheet>
   <SheetTrigger asChild>
     <Button variant="outline">
@@ -201,8 +203,8 @@ export default function SheetPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Bottom Sheet Mobile"
-          description="Mobile-style bottom sheet for actions"
+          title={t('pages.sheet.preview3Title')}
+          description={t('pages.sheet.preview3Desc')}
           code={`<Sheet>
   <SheetTrigger asChild>
     <Button variant="outline">
@@ -267,8 +269,8 @@ export default function SheetPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Top Notification Bar"
-          description="Top-sliding sheet for announcements"
+          title={t('pages.sheet.preview4Title')}
+          description={t('pages.sheet.preview4Desc')}
           code={`<Sheet>
   <SheetTrigger asChild>
     <Button variant="outline">Show Announcement</Button>
@@ -313,8 +315,8 @@ export default function SheetPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Form Submission Sheet"
-          description="Sheet with form and footer actions"
+          title={t('pages.sheet.preview5Title')}
+          description={t('pages.sheet.preview5Desc')}
           code={`<Sheet>
   <SheetTrigger asChild>
     <Button>

@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { JsonViewer } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function JsonViewerPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">JsonViewer</h1>
         <p className="text-xl text-muted-foreground">
-          Display formatted JSON data with syntax highlighting.
+          {t('pages.jsonViewer.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Simple Object"
-          description="Basic JSON object display"
+          title={t('pages.jsonViewer.preview1Title')}
+          description={t('pages.jsonViewer.preview1Desc')}
           code={`<JsonViewer
   data={{
     name: "John Doe",
@@ -36,8 +38,8 @@ export default function JsonViewerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Nested Data"
-          description="Complex nested JSON structure"
+          title={t('pages.jsonViewer.preview2Title')}
+          description={t('pages.jsonViewer.preview2Desc')}
           code={`<JsonViewer
   data={{
     users: [
@@ -66,8 +68,8 @@ export default function JsonViewerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="API Response"
-          description="Typical REST API response format"
+          title={t('pages.jsonViewer.preview3Title')}
+          description={t('pages.jsonViewer.preview3Desc')}
           code={`<JsonViewer
   data={{
     status: "success",
@@ -102,8 +104,8 @@ export default function JsonViewerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Configuration Object"
-          description="Application settings"
+          title={t('pages.jsonViewer.preview4Title')}
+          description={t('pages.jsonViewer.preview4Desc')}
           code={`<JsonViewer
   data={{
     app: {
@@ -146,8 +148,8 @@ export default function JsonViewerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Array Data"
-          description="List of items"
+          title={t('pages.jsonViewer.preview5Title')}
+          description={t('pages.jsonViewer.preview5Desc')}
           code={`<JsonViewer
   data={[
     { id: 1, product: "Laptop", price: 999 },

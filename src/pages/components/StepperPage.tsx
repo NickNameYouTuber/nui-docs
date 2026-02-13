@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Stepper, Button } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function StepperPage() {
+  const { t } = useDocLang();
   const [activeStep1, setActiveStep1] = useState(1);
   const [activeStep2, setActiveStep2] = useState(2);
 
@@ -26,14 +28,14 @@ export default function StepperPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Stepper</h1>
         <p className="text-xl text-muted-foreground">
-          A progress indicator for multi-step processes with visual step tracking and descriptions.
+          {t('pages.stepper.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Horizontal Stepper"
-          description="Default horizontal layout for checkout flow"
+          title={t('pages.stepper.preview1Title')}
+          description={t('pages.stepper.preview1Desc')}
           code={`const steps = [
   { title: 'Cart', description: 'Review items' },
   { title: 'Shipping', description: 'Enter address' },
@@ -47,8 +49,8 @@ export default function StepperPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Vertical Stepper"
-          description="Vertical orientation for account setup wizard"
+          title={t('pages.stepper.preview2Title')}
+          description={t('pages.stepper.preview2Desc')}
           code={`const steps = [
   { title: 'Create Account', description: 'Basic information' },
   { title: 'Verify Email', description: 'Check your inbox' },

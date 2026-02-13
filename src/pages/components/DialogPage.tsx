@@ -7,18 +7,20 @@ import {
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function DialogPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Dialog"
-        description="A modal window that overlays the main content, requiring user interaction. Built on Radix UI Dialog primitive."
-        badge="Overlay"
+        description={t('pages.dialog.desc')}
+        badge={t('common.badgeOverlay')}
       />
 
       <ComponentPreview
-        title="Basic Dialog"
+        title={t('pages.dialog.preview1Title')}
         code={`<Dialog>
   <DialogTrigger asChild>
     <Button variant="outline">Open Dialog</Button>
@@ -75,7 +77,7 @@ export function DialogPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Confirmation Dialog"
+        title={t('pages.dialog.preview2Title')}
         code={`<Dialog>
   <DialogTrigger asChild>
     <Button variant="destructive">Delete Account</Button>

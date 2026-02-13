@@ -1,5 +1,6 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   HoverCard,
   HoverCardTrigger,
@@ -10,19 +11,20 @@ import {
 import { CalendarDays, MapPin } from 'lucide-react';
 
 export default function HoverCardPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">HoverCard</h1>
         <p className="text-xl text-muted-foreground">
-          A popover that appears on hover, built with Radix UI for displaying rich content.
+          {t('pages.hoverCard.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Hover Card"
-          description="Hover over the trigger to see content"
+          title={t('pages.hoverCard.preview1Title')}
+          description={t('pages.hoverCard.preview1Desc')}
           code={`<HoverCard>
   <HoverCardTrigger asChild>
     <Button variant="link">@username</Button>
@@ -57,8 +59,8 @@ export default function HoverCardPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="User Profile Card"
-          description="Rich user information on hover"
+          title={t('pages.hoverCard.preview2Title')}
+          description={t('pages.hoverCard.preview2Desc')}
           code={`<HoverCard>
   <HoverCardTrigger asChild>
     <Button variant="link">@shadcn</Button>
@@ -111,8 +113,8 @@ export default function HoverCardPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Location Info"
-          description="Display location details"
+          title={t('pages.hoverCard.preview3Title')}
+          description={t('pages.hoverCard.preview3Desc')}
           code={`<HoverCard>
   <HoverCardTrigger asChild>
     <span className="cursor-pointer underline decoration-dotted">

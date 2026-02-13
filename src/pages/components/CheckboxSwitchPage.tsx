@@ -3,8 +3,10 @@ import { Checkbox, Switch, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function CheckboxSwitchPage() {
+  const { t } = useDocLang();
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(true);
   const [switch1, setSwitch1] = useState(false);
@@ -14,15 +16,15 @@ export function CheckboxSwitchPage() {
     <div>
       <PageHeader
         title="Checkbox & Switch"
-        description="Toggle controls for boolean options — checkboxes for forms, switches for settings."
-        badge="Atom"
+        description={t('pages.checkboxSwitch.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       {/* Checkbox */}
       <h2 className="text-xl font-semibold mb-4">Checkbox</h2>
 
       <ComponentPreview
-        title="Basic Checkbox"
+        title={t('pages.checkboxSwitch.preview1Title')}
         code={`<div className="flex items-center gap-2">
   <Checkbox id="terms" />
   <Label htmlFor="terms">Accept terms and conditions</Label>
@@ -35,7 +37,7 @@ export function CheckboxSwitchPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Checkbox States"
+        title={t('pages.checkboxSwitch.preview2Title')}
         code={`<Checkbox />
 <Checkbox checked />
 <Checkbox disabled />
@@ -72,7 +74,7 @@ export function CheckboxSwitchPage() {
       <h2 className="text-xl font-semibold mb-4 mt-10">Switch</h2>
 
       <ComponentPreview
-        title="Basic Switch"
+        title={t('pages.checkboxSwitch.preview3Title')}
         code={`<div className="flex items-center gap-2">
   <Switch id="notifications" />
   <Label htmlFor="notifications">Enable notifications</Label>
@@ -85,7 +87,7 @@ export function CheckboxSwitchPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Switch in Settings"
+        title={t('pages.checkboxSwitch.preview4Title')}
         code={`<div className="space-y-4">
   <div className="flex items-center justify-between">
     <Label htmlFor="dark-mode">Dark mode</Label>

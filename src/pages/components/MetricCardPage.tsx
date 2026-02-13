@@ -2,21 +2,23 @@ import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { MetricCard } from '@nicorp/nui';
 import { DollarSign, Users, Activity, CreditCard } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function MetricCardPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">MetricCard</h1>
         <p className="text-xl text-muted-foreground">
-          A dashboard metric card component displaying key statistics with optional trends and icons.
+          {t('pages.metricCard.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Metric"
-          description="Simple metric card with title and value"
+          title={t('pages.metricCard.preview1Title')}
+          description={t('pages.metricCard.preview1Desc')}
           code={`<MetricCard
   title="Total Revenue"
   value="$45,231"
@@ -31,8 +33,8 @@ export default function MetricCardPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Icons"
-          description="Add icons from lucide-react"
+          title={t('pages.metricCard.preview2Title')}
+          description={t('pages.metricCard.preview2Desc')}
           code={`import { DollarSign, Users } from 'lucide-react';
 
 <MetricCard
@@ -72,8 +74,8 @@ export default function MetricCardPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Trend Indicators"
-          description="Show percentage change with trend arrows"
+          title={t('pages.metricCard.preview3Title')}
+          description={t('pages.metricCard.preview3Desc')}
           code={`<MetricCard
   title="Total Revenue"
   value="$45,231"
@@ -123,8 +125,8 @@ export default function MetricCardPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Descriptions"
-          description="Add context instead of trends"
+          title={t('pages.metricCard.preview4Title')}
+          description={t('pages.metricCard.preview4Desc')}
           code={`<MetricCard
   title="Total Revenue"
   value="$45,231"

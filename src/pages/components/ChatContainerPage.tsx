@@ -11,6 +11,7 @@ import {
   ChatInput,
   PromptSuggestions,
 } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 interface Message {
   id: number;
@@ -34,6 +35,7 @@ const aiResponses = [
 ];
 
 export default function ChatContainerPage() {
+  const { t } = useDocLang();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,14 +59,14 @@ export default function ChatContainerPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatContainer</h1>
         <p className="text-xl text-muted-foreground">
-          A full chat layout combining ChatList, ChatBubble, ChatInput, and PromptSuggestions into a complete AI chat interface.
+          {t('pages.chatContainer.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Full Chat Demo"
-          description="Interactive chat with AI-style responses. Type a message or click a suggestion."
+          title={t('pages.chatContainer.preview1Title')}
+          description={t('pages.chatContainer.preview1Desc')}
           code={`<ChatContainer className="h-[500px] rounded-xl border">
   <ChatList autoScroll>
     {messages.map((msg) => (

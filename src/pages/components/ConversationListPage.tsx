@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ConversationList } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const conversations = [
   { id: '1', title: 'Help with React hooks', updatedAt: new Date(), preview: 'Can you explain useEffect cleanup?' },
@@ -14,6 +15,7 @@ const conversations = [
 ];
 
 export default function ConversationListPage() {
+  const { t } = useDocLang();
   const [activeId, setActiveId] = useState('1');
   const [convos, setConvos] = useState(conversations);
 
@@ -22,14 +24,14 @@ export default function ConversationListPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ConversationList</h1>
         <p className="text-xl text-muted-foreground">
-          Sidebar conversation list with search, date grouping, rename, and delete actions.
+          {t('pages.conversationList.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Default"
-          description="Full conversation list with all features"
+          title={t('pages.conversationList.preview1Title')}
+          description={t('pages.conversationList.preview1Desc')}
           code={`<ConversationList
   conversations={conversations}
   activeId={activeId}
@@ -58,8 +60,8 @@ export default function ConversationListPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Without Search"
-          description="Compact list without search bar"
+          title={t('pages.conversationList.preview2Title')}
+          description={t('pages.conversationList.preview2Desc')}
           code={`<ConversationList
   conversations={conversations}
   activeId="1"

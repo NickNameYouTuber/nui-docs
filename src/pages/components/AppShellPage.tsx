@@ -1,21 +1,24 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { AppShell, Sidebar, Header, Main, Button } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function AppShellPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">AppShell</h1>
         <p className="text-xl text-muted-foreground">
-          A layout component providing a standard application structure with sidebar, header, and main content area.
+          {t('pages.appShell.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Layout"
-          description="Simple app shell with sidebar, header, and main content"
+          title={t('pages.appShell.preview1Title')}
+          description={t('pages.appShell.preview1Desc')}
           code={`<AppShell>
   <Sidebar>
     <div className="flex h-14 items-center border-b px-6">
@@ -66,8 +69,8 @@ export default function AppShellPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Header Actions"
-          description="App shell with buttons and actions in the header"
+          title={t('pages.appShell.preview2Title')}
+          description={t('pages.appShell.preview2Desc')}
           code={`<AppShell>
   <Sidebar>
     {/* Sidebar content */}

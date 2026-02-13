@@ -3,6 +3,7 @@ import { MultiSelect, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 const frameworks = [
   { value: 'react', label: 'React' },
@@ -41,6 +42,7 @@ const skills = [
 ];
 
 export function MultiselectPage() {
+  const { t } = useDocLang();
   const [value1, setValue1] = useState<string[]>([]);
   const [value2, setValue2] = useState<string[]>(['react', 'next']);
   const [value3, setValue3] = useState<string[]>([]);
@@ -50,12 +52,12 @@ export function MultiselectPage() {
     <div>
       <PageHeader
         title="MultiSelect"
-        description="A searchable multi-select dropdown that allows users to select multiple options with badges display. Built on Popover with search and keyboard navigation."
-        badge="Advanced"
+        description={t('pages.multiselect.desc')}
+        badge={t('common.badgeAdvanced')}
       />
 
       <ComponentPreview
-        title="Basic MultiSelect"
+        title={t('pages.multiselect.preview1Title')}
         code={`const [value, setValue] = useState<string[]>([]);
 
 const options = [
@@ -88,7 +90,7 @@ const options = [
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Default Values"
+        title={t('pages.multiselect.preview2Title')}
         code={`const [value, setValue] = useState<string[]>(['react', 'next']);
 
 <MultiSelect
@@ -107,7 +109,7 @@ const options = [
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Label"
+        title={t('pages.multiselect.preview3Title')}
         code={`<div className="grid gap-2 w-full max-w-md">
   <Label>Select Countries</Label>
   <MultiSelect
@@ -132,8 +134,8 @@ const options = [
       </ComponentPreview>
 
       <ComponentPreview
-        title="Large Option List with Search"
-        description="Search functionality is especially useful with many options."
+        title={t('pages.multiselect.preview4Title')}
+        description={t('pages.multiselect.preview4Desc')}
         code={`<MultiSelect
   options={skills}
   value={value}
@@ -161,7 +163,7 @@ const options = [
       </ComponentPreview>
 
       <ComponentPreview
-        title="Disabled State"
+        title={t('pages.multiselect.preview5Title')}
         code={`<MultiSelect
   options={frameworks}
   value={['react', 'vue']}

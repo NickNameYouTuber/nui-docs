@@ -13,8 +13,10 @@ import {
   AlertDialogTrigger,
   Button,
 } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function AlertDialogPage() {
+  const { t } = useDocLang();
   const [loading, setLoading] = useState(false);
 
   const handleAsyncDelete = async () => {
@@ -30,14 +32,14 @@ export default function AlertDialogPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">AlertDialog</h1>
         <p className="text-xl text-muted-foreground">
-          A modal dialog for critical confirmations and destructive actions that interrupts the user.
+          {t('pages.alertDialog.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Confirmation"
-          description="Simple confirmation dialog with action and cancel buttons"
+          title={t('pages.alertDialog.preview1Title')}
+          description={t('pages.alertDialog.preview1Desc')}
           code={`<AlertDialog>
   <AlertDialogTrigger asChild>
     <Button variant="outline">Save Changes</Button>
@@ -76,8 +78,8 @@ export default function AlertDialogPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Destructive Action"
-          description="Warning dialog for dangerous operations like deletion"
+          title={t('pages.alertDialog.preview2Title')}
+          description={t('pages.alertDialog.preview2Desc')}
           code={`<AlertDialog>
   <AlertDialogTrigger asChild>
     <Button variant="destructive">Delete Account</Button>
@@ -122,8 +124,8 @@ export default function AlertDialogPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Styled"
-          description="AlertDialog with custom styling and content"
+          title={t('pages.alertDialog.preview3Title')}
+          description={t('pages.alertDialog.preview3Desc')}
           code={`<AlertDialog>
   <AlertDialogTrigger asChild>
     <Button>Subscribe to Newsletter</Button>
@@ -168,8 +170,8 @@ export default function AlertDialogPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Async Action Handling"
-          description="Dialog that handles asynchronous operations with loading state"
+          title={t('pages.alertDialog.preview4Title')}
+          description={t('pages.alertDialog.preview4Desc')}
           code={`const [loading, setLoading] = useState(false);
 
 const handleAsyncDelete = async () => {

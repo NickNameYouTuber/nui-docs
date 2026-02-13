@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { StatusBadge } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function StatusBadgePage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">StatusBadge</h1>
         <p className="text-xl text-muted-foreground">
-          A colored badge component for displaying status with optional dot indicator.
+          {t('pages.statusBadge.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Status Variants"
-          description="Five status options with semantic colors"
+          title={t('pages.statusBadge.preview1Title')}
+          description={t('pages.statusBadge.preview1Desc')}
           code={`<StatusBadge status="success">Active</StatusBadge>
 <StatusBadge status="warning">Pending</StatusBadge>
 <StatusBadge status="error">Failed</StatusBadge>
@@ -32,8 +34,8 @@ export default function StatusBadgePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Without Dot Indicator"
-          description="Hide the colored dot with dot={false}"
+          title={t('pages.statusBadge.preview2Title')}
+          description={t('pages.statusBadge.preview2Desc')}
           code={`<StatusBadge status="success" dot={false}>Active</StatusBadge>
 <StatusBadge status="warning" dot={false}>Pending</StatusBadge>
 <StatusBadge status="error" dot={false}>Failed</StatusBadge>`}

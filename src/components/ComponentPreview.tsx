@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@nicorp/nui';
 import { CodeExample } from './CodeExample';
+import { useDocLang } from '../i18n';
 
 interface ComponentPreviewProps {
   title?: string;
@@ -10,6 +11,7 @@ interface ComponentPreviewProps {
 }
 
 export function ComponentPreview({ title, description, code, children }: ComponentPreviewProps) {
+  const { t } = useDocLang();
   return (
     <div className="mb-8 rounded-lg border border-border overflow-hidden">
       {(title || description) && (
@@ -21,10 +23,10 @@ export function ComponentPreview({ title, description, code, children }: Compone
       <Tabs defaultValue="preview" className="w-full">
         <TabsList className="w-full justify-start rounded-none border-b border-border bg-transparent px-4 h-10">
           <TabsTrigger value="preview" className="text-xs data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none">
-            Preview
+            {t('chrome.preview')}
           </TabsTrigger>
           <TabsTrigger value="code" className="text-xs data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none">
-            Code
+            {t('chrome.code')}
           </TabsTrigger>
         </TabsList>
         <TabsContent value="preview" className="p-6 flex flex-wrap items-center gap-4 min-h-[80px]">

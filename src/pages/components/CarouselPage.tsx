@@ -8,14 +8,17 @@ import {
   CarouselNext,
   Card,
 } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function CarouselPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Carousel</h1>
         <p className="text-xl text-muted-foreground">
-          A responsive carousel component built with Embla Carousel featuring touch gestures and keyboard navigation.
+          {t('pages.carousel.desc')}
         </p>
       </div>
 

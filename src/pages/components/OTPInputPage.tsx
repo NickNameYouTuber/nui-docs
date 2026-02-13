@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { OTPInput, Label, Button } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function OTPInputPage() {
+  const { t } = useDocLang();
   const [otp1, setOtp1] = useState('');
   const [otp2, setOtp2] = useState('');
   const [otp3, setOtp3] = useState('');
@@ -15,14 +17,14 @@ export default function OTPInputPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">OTPInput</h1>
         <p className="text-xl text-muted-foreground">
-          A specialized input for one-time passwords with automatic focus management and paste support.
+          {t('pages.otpInput.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic OTP Input"
-          description="6-digit OTP input with default configuration"
+          title={t('pages.otpInput.preview1Title')}
+          description={t('pages.otpInput.preview1Desc')}
           code={`const [otp, setOtp] = useState('');
 
 <OTPInput

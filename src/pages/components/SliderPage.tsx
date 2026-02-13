@@ -3,8 +3,10 @@ import { Slider, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function SliderPage() {
+  const { t } = useDocLang();
   const [value1, setValue1] = useState([50]);
   const [value2, setValue2] = useState([30, 70]);
   const [volume, setVolume] = useState([75]);
@@ -13,12 +15,12 @@ export function SliderPage() {
     <div>
       <PageHeader
         title="Slider"
-        description="A draggable slider for selecting numeric values or ranges. Supports single and multiple thumbs, keyboard navigation, and touch input. Built on Radix UI Slider."
-        badge="Atom"
+        description={t('pages.slider.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Slider"
+        title={t('pages.slider.preview1Title')}
         code={`const [value, setValue] = useState([50]);
 
 <Slider
@@ -41,8 +43,8 @@ export function SliderPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Range Slider"
-        description="Use an array with two values for range selection with two thumbs."
+        title={t('pages.slider.preview2Title')}
+        description={t('pages.slider.preview2Desc')}
         code={`const [value, setValue] = useState([30, 70]);
 
 <Slider
@@ -65,7 +67,7 @@ export function SliderPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Label"
+        title={t('pages.slider.preview3Title')}
         code={`const [volume, setVolume] = useState([75]);
 
 <div className="grid gap-2">
@@ -96,7 +98,7 @@ export function SliderPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Custom Step"
+        title={t('pages.slider.preview4Title')}
         code={`<Slider defaultValue={[25]} max={100} step={25} />`}
       >
         <div className="w-full max-w-md">
@@ -112,7 +114,7 @@ export function SliderPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Disabled State"
+        title={t('pages.slider.preview5Title')}
         code={`<Slider defaultValue={[50]} max={100} disabled />`}
       >
         <Slider defaultValue={[50]} max={100} disabled className="max-w-md" />

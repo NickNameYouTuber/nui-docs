@@ -10,21 +10,24 @@ import {
   BreadcrumbSeparator,
 } from '@nicorp/nui';
 import { Home, ChevronRight, Slash } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 export default function BreadcrumbPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Breadcrumb</h1>
         <p className="text-xl text-muted-foreground">
-          A navigation aid that shows the user's location within the site hierarchy.
+          {t('pages.breadcrumb.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Breadcrumb"
-          description="Simple breadcrumb trail with links"
+          title={t('pages.breadcrumb.preview1Title')}
+          description={t('pages.breadcrumb.preview1Desc')}
           code={`<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
@@ -59,8 +62,8 @@ export default function BreadcrumbPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Icons"
-          description="Breadcrumb with home icon and custom separators"
+          title={t('pages.breadcrumb.preview2Title')}
+          description={t('pages.breadcrumb.preview2Desc')}
           code={`<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
@@ -107,8 +110,8 @@ export default function BreadcrumbPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Collapsed with Ellipsis"
-          description="Long breadcrumb trails can be collapsed using ellipsis"
+          title={t('pages.breadcrumb.preview3Title')}
+          description={t('pages.breadcrumb.preview3Desc')}
           code={`<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>

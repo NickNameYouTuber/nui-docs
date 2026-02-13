@@ -10,8 +10,10 @@ import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
 import { User, Settings, LogOut, CreditCard, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { useDocLang } from '~/i18n';
 
 export function DropdownMenuPage() {
+  const { t } = useDocLang();
   const [bookmarks, setBookmarks] = useState(true);
   const [urls, setUrls] = useState(false);
 
@@ -19,12 +21,12 @@ export function DropdownMenuPage() {
     <div>
       <PageHeader
         title="Dropdown Menu"
-        description="A dropdown menu with items, submenus, checkboxes, and radio groups. Built on Radix UI DropdownMenu."
-        badge="Overlay"
+        description={t('pages.dropdownMenu.desc')}
+        badge={t('common.badgeOverlay')}
       />
 
       <ComponentPreview
-        title="Basic Menu"
+        title={t('pages.dropdownMenu.preview1Title')}
         code={`<DropdownMenu>
   <DropdownMenuTrigger asChild>
     <Button variant="outline">
@@ -77,7 +79,7 @@ export function DropdownMenuPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Checkboxes"
+        title={t('pages.dropdownMenu.preview2Title')}
         code={`<DropdownMenu>
   <DropdownMenuTrigger asChild>
     <Button variant="outline">Options</Button>

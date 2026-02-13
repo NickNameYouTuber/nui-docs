@@ -2,18 +2,21 @@ import { Badge } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '../../i18n';
 
 export function BadgePage() {
+  const { t } = useDocLang();
+
   return (
     <div>
       <PageHeader
         title="Badge"
-        description="A small status indicator for tags, labels, and categories."
-        badge="Atom"
+        description={t('pages.badge.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Variants"
+        title={t('common.variants')}
         code={`<Badge variant="default">Default</Badge>
 <Badge variant="secondary">Secondary</Badge>
 <Badge variant="destructive">Destructive</Badge>
@@ -26,8 +29,8 @@ export function BadgePage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Use Cases"
-        description="Badges in context: status labels, tags, counters."
+        title={t('pages.badge.useCases')}
+        description={t('pages.badge.useCasesDesc')}
         code={`<Badge>Active</Badge>
 <Badge variant="secondary">v0.1.7</Badge>
 <Badge variant="outline">React</Badge>

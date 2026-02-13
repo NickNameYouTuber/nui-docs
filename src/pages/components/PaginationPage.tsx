@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   Pagination,
   PaginationContent,
@@ -12,6 +13,7 @@ import {
 } from '@nicorp/nui';
 
 export default function PaginationPage() {
+  const { t } = useDocLang();
   const [currentPage1, setCurrentPage1] = useState(1);
   const [currentPage2, setCurrentPage2] = useState(5);
 
@@ -23,14 +25,14 @@ export default function PaginationPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Pagination</h1>
         <p className="text-xl text-muted-foreground">
-          A navigation component for multi-page content with numbered links and previous/next buttons.
+          {t('pages.pagination.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Pagination"
-          description="Simple pagination with numbered pages"
+          title={t('pages.pagination.preview1Title')}
+          description={t('pages.pagination.preview1Desc')}
           code={`<Pagination>
   <PaginationContent>
     <PaginationItem>
@@ -75,8 +77,8 @@ export default function PaginationPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Ellipsis"
-          description="Pagination with ellipsis for large page ranges"
+          title={t('pages.pagination.preview2Title')}
+          description={t('pages.pagination.preview2Desc')}
           code={`<Pagination>
   <PaginationContent>
     <PaginationItem>
@@ -145,8 +147,8 @@ export default function PaginationPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Controlled Pagination"
-          description="Pagination with controlled state for page navigation"
+          title={t('pages.pagination.preview3Title')}
+          description={t('pages.pagination.preview3Desc')}
           code={`const [currentPage, setCurrentPage] = useState(1);
 const totalPages = 10;
 

@@ -4,6 +4,7 @@ import { PropsTable } from '../../components/PropsTable';
 import { DataTable, DataTableColumnHeader, Badge, Button } from '@nicorp/nui';
 import type { ColumnDef } from '@tanstack/react-table';
 import { MoreHorizontal } from 'lucide-react';
+import { useDocLang } from '../../i18n';
 
 // Sample data types
 type User = {
@@ -43,6 +44,7 @@ const productData: Product[] = [
 ];
 
 export default function DataTablePage() {
+  const { t } = useDocLang();
   // Basic columns
   const basicColumns: ColumnDef<User>[] = [
     {
@@ -210,14 +212,14 @@ export default function DataTablePage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">DataTable</h1>
         <p className="text-xl text-muted-foreground">
-          A powerful data table component built with TanStack Table featuring sorting, filtering, and pagination.
+          {t('pages.dataTable.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Table"
-          description="Simple table with column definitions"
+          title={t('pages.dataTable.preview1Title')}
+          description={t('pages.dataTable.preview1Desc')}
           code={`const columns: ColumnDef<User>[] = [
   { accessorKey: 'name', header: 'Name' },
   { accessorKey: 'email', header: 'Email' },
@@ -230,8 +232,8 @@ export default function DataTablePage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Sorting"
-          description="Click column headers to sort (uses DataTableColumnHeader)"
+          title={t('pages.dataTable.preview2Title')}
+          description={t('pages.dataTable.preview2Desc')}
           code={`import { DataTableColumnHeader } from '@nicorp/nui';
 
 const columns: ColumnDef<User>[] = [

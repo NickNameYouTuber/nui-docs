@@ -1,21 +1,24 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { Box } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function BoxPage() {
+  const { t } = useDocLang();
+  
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Box</h1>
         <p className="text-xl text-muted-foreground">
-          A universal container component that can be rendered as any HTML element using the "as" prop.
+          {t('pages.box.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Box"
-          description="Default box renders as a div element"
+          title={t('pages.box.preview1Title')}
+          description={t('pages.box.preview1Desc')}
           code={`<Box className="p-4 rounded-lg border bg-muted">
   <p>This is a box component.</p>
 </Box>`}
@@ -26,8 +29,8 @@ export default function BoxPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="As Different Element"
-          description="Use the 'as' prop to render as any HTML element"
+          title={t('pages.box.preview2Title')}
+          description={t('pages.box.preview2Desc')}
           code={`<Box as="section" className="p-4 rounded-lg border">
   <h3 className="font-semibold mb-2">Section Box</h3>
   <p className="text-sm text-muted-foreground">
@@ -60,8 +63,8 @@ export default function BoxPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Card Layout"
-          description="Using Box as a flexible card container"
+          title={t('pages.box.preview3Title')}
+          description={t('pages.box.preview3Desc')}
           code={`<div className="grid grid-cols-3 gap-4">
   <Box className="p-6 rounded-xl border bg-card">
     <h3 className="text-2xl font-bold mb-1">2.4K</h3>
@@ -94,8 +97,8 @@ export default function BoxPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Spacing & Layout"
-          description="Box with spacing utilities for layout control"
+          title={t('pages.box.preview4Title')}
+          description={t('pages.box.preview4Desc')}
           code={`<Box className="space-y-4">
   <Box className="h-20 bg-primary rounded" />
   <Box className="h-20 bg-secondary rounded" />
@@ -110,8 +113,8 @@ export default function BoxPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Clickable Box"
-          description="Box as a button element with click handler"
+          title={t('pages.box.preview5Title')}
+          description={t('pages.box.preview5Desc')}
           code={`<Box
   as="button"
   onClick={() => alert('Box clicked!')}

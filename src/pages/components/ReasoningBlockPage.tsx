@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ReasoningBlock } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ReasoningBlockPage() {
+  const { t } = useDocLang();
   const [isThinking, setIsThinking] = useState(true);
   const [thinkContent, setThinkContent] = useState("Let me analyze this problem step by step...");
 
@@ -33,14 +35,14 @@ export default function ReasoningBlockPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ReasoningBlock</h1>
         <p className="text-xl text-muted-foreground">
-          Collapsible "thinking" block showing AI's reasoning process — similar to Claude's thinking or o1's reasoning.
+          {t('pages.reasoningBlock.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Completed Reasoning"
-          description="Collapsed by default, shows reasoning duration"
+          title={t('pages.reasoningBlock.preview1Title')}
+          description={t('pages.reasoningBlock.preview1Desc')}
           code={`<ReasoningBlock
   content="The user is asking about sorting algorithms. Given the constraints of O(n log n) time complexity, the best options are merge sort or quicksort."
   duration={12}
@@ -53,8 +55,8 @@ export default function ReasoningBlockPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Active Thinking"
-          description="Live thinking with timer and streaming content"
+          title={t('pages.reasoningBlock.preview2Title')}
+          description={t('pages.reasoningBlock.preview2Desc')}
           code={`<ReasoningBlock
   content={thinkContent}
   isThinking={isThinking}

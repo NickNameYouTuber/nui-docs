@@ -1,26 +1,33 @@
 import { PageHeader } from '~/components/PageHeader';
 import { CodeExample } from '~/components/CodeExample';
+import { useDocLang } from '../i18n';
 
 const installSteps = [
   {
     title: '1. Install the package',
+    titleKey: 'start.step1',
     code: `npm install @nicorp/nui`,
     language: 'bash',
   },
   {
     title: '2. Install peer dependencies',
+    titleKey: 'start.step2',
     code: `npm install react react-dom tailwindcss`,
     language: 'bash',
   },
   {
     title: '3. Import the styles',
+    titleKey: 'start.step3',
     description: 'Add the NUI stylesheet to your app entry point:',
+    descKey: 'start.step3desc',
     code: `// main.tsx or App.tsx
 import '@nicorp/nui/dist/style.css';`,
   },
   {
     title: '4. Configure Tailwind CSS',
+    titleKey: 'start.step4',
     description: 'Add NUI to your Tailwind content paths and set up the theme:',
+    descKey: 'start.step4desc',
     code: `// tailwind.config.ts
 export default {
   darkMode: 'class',
@@ -76,7 +83,9 @@ export default {
   },
   {
     title: '5. Add CSS variables',
+    titleKey: 'start.step5',
     description: 'Define theme tokens in your global CSS file:',
+    descKey: 'start.step5desc',
     code: `/* index.css */
 @tailwind base;
 @tailwind components;
@@ -125,7 +134,9 @@ export default {
   },
   {
     title: '6. Set up the ThemeProvider',
+    titleKey: 'start.step6',
     description: 'Wrap your app with NUI\'s ThemeProvider:',
+    descKey: 'start.step6desc',
     code: `// main.tsx
 import { ThemeProvider } from '@nicorp/nui';
 
@@ -137,6 +148,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   },
   {
     title: '7. Use components',
+    titleKey: 'start.step7',
     code: `import { Button, Card, CardHeader, CardTitle, CardContent } from '@nicorp/nui';
 
 function MyPage() {
@@ -155,19 +167,21 @@ function MyPage() {
 ];
 
 export function GettingStartedPage() {
+  const { t } = useDocLang();
+
   return (
     <div>
       <PageHeader
-        title="Getting Started"
-        description="Install NUI and start building beautiful interfaces in minutes."
+        title={t('start.title')}
+        description={t('start.description')}
       />
 
       <div className="space-y-8">
         {installSteps.map((step) => (
-          <div key={step.title}>
-            <h3 className="text-base font-semibold mb-1">{step.title}</h3>
-            {step.description && (
-              <p className="text-sm text-muted-foreground mb-2">{step.description}</p>
+          <div key={step.titleKey}>
+            <h3 className="text-base font-semibold mb-1">{t(step.titleKey)}</h3>
+            {step.descKey && (
+              <p className="text-sm text-muted-foreground mb-2">{t(step.descKey)}</p>
             )}
             <CodeExample code={step.code} language={step.language || 'tsx'} />
           </div>

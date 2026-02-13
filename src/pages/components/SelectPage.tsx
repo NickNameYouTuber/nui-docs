@@ -5,18 +5,20 @@ import {
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function SelectPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Select"
-        description="A dropdown select component built on Radix UI Select primitive with search, groups, and keyboard navigation."
-        badge="Atom"
+        description={t('pages.select.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Select"
+        title={t('pages.select.preview1Title')}
         code={`<Select>
   <SelectTrigger className="w-[200px]">
     <SelectValue placeholder="Select a fruit" />
@@ -43,7 +45,7 @@ export function SelectPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Label"
+        title={t('pages.select.preview2Title')}
         code={`<div className="grid gap-2 w-[200px]">
   <Label htmlFor="role">Role</Label>
   <Select>

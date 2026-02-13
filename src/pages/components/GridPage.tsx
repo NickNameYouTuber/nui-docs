@@ -2,18 +2,20 @@ import { Grid } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function GridPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Grid"
-        description="A CSS Grid layout component with responsive column configuration. Supports simple numeric columns or responsive breakpoint objects."
-        badge="Layout"
+        description={t('pages.grid.desc')}
+        badge={t('common.badgeLayout')}
       />
 
       <ComponentPreview
-        title="Simple Grid - 3 Columns"
+        title={t('pages.grid.preview1Title')}
         code={`<Grid cols={3} gap={4}>
   <div>Item 1</div>
   <div>Item 2</div>
@@ -33,8 +35,8 @@ export function GridPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Responsive Columns"
-        description="1 column on mobile, 2 on tablet, 3 on desktop, 4 on large screens."
+        title={t('pages.grid.preview2Title')}
+        description={t('pages.grid.preview2Desc')}
         code={`<Grid
   cols={{ sm: 1, md: 2, lg: 3, xl: 4 }}
   gap={4}

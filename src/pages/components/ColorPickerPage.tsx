@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ColorPicker, Label } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ColorPickerPage() {
+  const { t } = useDocLang();
   const [color1, setColor1] = useState('#3b82f6');
   const [color2, setColor2] = useState('#ef4444');
   const [color3, setColor3] = useState('#22c55e');
@@ -14,14 +16,14 @@ export default function ColorPickerPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ColorPicker</h1>
         <p className="text-xl text-muted-foreground">
-          An interactive color picker with HSL gradient, hue slider, preset colors, and hex input.
+          {t('pages.colorPicker.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Color Picker"
-          description="Simple color picker with default value"
+          title={t('pages.colorPicker.preview1Title')}
+          description={t('pages.colorPicker.preview1Desc')}
           code={`const [color, setColor] = useState('#3b82f6');
 
 <ColorPicker
@@ -47,8 +49,8 @@ export default function ColorPickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Color picker with a label for form fields"
+          title={t('pages.colorPicker.preview2Title')}
+          description={t('pages.colorPicker.preview2Desc')}
           code={`const [color, setColor] = useState('#ef4444');
 
 <div className="space-y-2">
@@ -69,8 +71,8 @@ export default function ColorPickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Multiple ColorPickers"
-          description="Multiple color pickers for theme configuration"
+          title={t('pages.colorPicker.preview3Title')}
+          description={t('pages.colorPicker.preview3Desc')}
           code={`const [primaryColor, setPrimaryColor] = useState('#3b82f6');
 const [secondaryColor, setSecondaryColor] = useState('#22c55e');
 

@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatFollowUp } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatFollowUpPage() {
+  const { t } = useDocLang();
   const [selected1, setSelected1] = useState<string | undefined>();
   const [selected2, setSelected2] = useState<string | undefined>();
 
@@ -12,7 +14,7 @@ export default function ChatFollowUpPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatFollowUp</h1>
         <p className="text-xl text-muted-foreground">
-          AI follow-up questions with clickable answer options, rendered inside a chat bubble. Supports free-text answers.
+          {t('pages.chatFollowUp.desc')}
         </p>
       </div>
 

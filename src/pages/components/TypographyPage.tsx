@@ -2,18 +2,20 @@ import { Heading, Text, Code, Blockquote, Lead, Muted } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function TypographyPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Typography"
-        description="A set of composable text components for consistent typography across your application. Includes headings, body text, code snippets, quotes, and more."
-        badge="Atom"
+        description={t('pages.typography.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Heading Levels"
+        title={t('pages.typography.preview1Title')}
         code={`<Heading level={1}>Heading 1</Heading>
 <Heading level={2}>Heading 2</Heading>
 <Heading level={3}>Heading 3</Heading>
@@ -32,7 +34,7 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Text Sizes"
+        title={t('pages.typography.preview2Title')}
         code={`<Text size="xs">Extra small text</Text>
 <Text size="sm">Small text</Text>
 <Text size="base">Base text (default)</Text>
@@ -49,7 +51,7 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Text Weights"
+        title={t('pages.typography.preview3Title')}
         code={`<Text weight="normal">Normal weight</Text>
 <Text weight="medium">Medium weight</Text>
 <Text weight="semibold">Semibold weight</Text>
@@ -64,7 +66,7 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Text Variants"
+        title={t('pages.typography.preview4Title')}
         code={`<Text variant="default">Default text</Text>
 <Text variant="muted">Muted text</Text>
 <Text variant="success">Success text</Text>
@@ -81,15 +83,15 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Code"
+        title={t('pages.typography.preview5Title')}
         code={`<p>Install dependencies with <Code>npm install</Code></p>`}
       >
         <p>Install dependencies with <Code>npm install</Code></p>
       </ComponentPreview>
 
       <ComponentPreview
-        title="Lead"
-        description="Larger, prominent text for introductions."
+        title={t('pages.typography.preview6Title')}
+        description={t('pages.typography.preview6Desc')}
         code={`<Lead>
   This is a lead paragraph that stands out from regular body text.
   It's typically used for introductions or important statements.
@@ -102,7 +104,7 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Blockquote"
+        title={t('pages.typography.preview7Title')}
         code={`<Blockquote>
   "The only way to do great work is to love what you do."
   — Steve Jobs
@@ -115,8 +117,8 @@ export function TypographyPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Muted"
-        description="De-emphasized text for less important information."
+        title={t('pages.typography.preview8Title')}
+        description={t('pages.typography.preview8Desc')}
         code={`<Muted>This is muted text, perfect for captions and footnotes.</Muted>`}
       >
         <Muted>This is muted text, perfect for captions and footnotes.</Muted>

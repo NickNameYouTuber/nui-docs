@@ -2,18 +2,20 @@ import { Container } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function ContainerPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Container"
-        description="A responsive max-width container component for consistent content width across breakpoints. Includes automatic horizontal centering and padding."
-        badge="Layout"
+        description={t('pages.container.desc')}
+        badge={t('common.badgeLayout')}
       />
 
       <ComponentPreview
-        title="Default Centered Container"
+        title={t('pages.container.preview1Title')}
         code={`<Container>
   <p>This content is centered and constrained to a max-width.</p>
 </Container>`}
@@ -24,7 +26,7 @@ export function ContainerPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="All Breakpoint Sizes"
+        title={t('pages.container.preview2Title')}
         code={`<Container maxWidth="sm">Small (640px)</Container>
 <Container maxWidth="md">Medium (768px)</Container>
 <Container maxWidth="lg">Large (1024px) - default</Container>
@@ -55,7 +57,7 @@ export function ContainerPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Without Centering"
+        title={t('pages.container.preview3Title')}
         code={`<Container centered={false}>
   <p>This container is not horizontally centered.</p>
 </Container>`}
@@ -66,7 +68,7 @@ export function ContainerPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Nested Containers"
+        title={t('pages.container.preview4Title')}
         code={`<Container maxWidth="xl">
   <h2>Outer Container (XL)</h2>
   <Container maxWidth="md">

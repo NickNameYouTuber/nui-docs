@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatMessage } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function ChatMessagePage() {
+  const { t } = useDocLang();
   const [selectedFramework, setSelectedFramework] = useState<string | undefined>();
 
   return (
@@ -11,7 +13,7 @@ export default function ChatMessagePage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ChatMessage</h1>
         <p className="text-xl text-muted-foreground">
-          Composite convenience component that wires together ChatBubble, MessageActions, ReasoningBlock, ChatToolCall, SourceCitation, ChatFollowUp, and more.
+          {t('pages.chatMessage.desc')}
         </p>
       </div>
 

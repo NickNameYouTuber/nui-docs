@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { MessageActions } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function MessageActionsPage() {
+  const { t } = useDocLang();
   const [likeState, setLikeState] = useState<'liked' | 'disliked' | null>(null);
 
   return (
@@ -11,22 +13,22 @@ export default function MessageActionsPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">MessageActions</h1>
         <p className="text-xl text-muted-foreground">
-          Action buttons for chat messages — copy, retry, edit, like/dislike, and share.
+          {t('pages.messageActions.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Default (Copy Only)"
-          description="Single copy button — the most common use case"
+          title={t('pages.messageActions.preview1Title')}
+          description={t('pages.messageActions.preview1Desc')}
           code={`<MessageActions actions={["copy"]} content="Hello world" visibility="always" />`}
         >
           <MessageActions actions={["copy"]} content="Hello world" visibility="always" />
         </ComponentPreview>
 
         <ComponentPreview
-          title="All Actions"
-          description="Full set of message action buttons"
+          title={t('pages.messageActions.preview2Title')}
+          description={t('pages.messageActions.preview2Desc')}
           code={`<MessageActions
   actions={["copy", "retry", "edit", "like", "dislike", "share"]}
   content="Message content to copy"
@@ -47,7 +49,7 @@ export default function MessageActionsPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="AI Response Actions"
+          title={t('pages.messageActions.preview3Title')}
           description="Common pattern for AI message actions"
           code={`<MessageActions
   actions={["copy", "retry", "like", "dislike"]}

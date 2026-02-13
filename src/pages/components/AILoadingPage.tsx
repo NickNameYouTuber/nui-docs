@@ -1,37 +1,39 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { AILoading } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function AILoadingPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">AILoading</h1>
         <p className="text-xl text-muted-foreground">
-          Animated loading indicators for AI thinking / typing states.
+          {t('pages.aiLoading.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Dots"
-          description="Bouncing dots — default typing indicator"
+          title={t('pages.aiLoading.preview1Title')}
+          description={t('pages.aiLoading.preview1Desc')}
           code={`<AILoading />`}
         >
           <AILoading />
         </ComponentPreview>
 
         <ComponentPreview
-          title="Text Variant"
-          description="Spinner with pulsing text"
+          title={t('pages.aiLoading.preview2Title')}
+          description={t('pages.aiLoading.preview2Desc')}
           code={`<AILoading variant="text" />`}
         >
           <AILoading variant="text" />
         </ComponentPreview>
 
         <ComponentPreview
-          title="Custom Text"
-          description="Override the thinking text"
+          title={t('pages.aiLoading.preview3Title')}
+          description={t('pages.aiLoading.preview3Desc')}
           code={`<AILoading variant="text" text="Generating" />`}
         >
           <AILoading variant="text" text="Generating" />

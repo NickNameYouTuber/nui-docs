@@ -5,6 +5,7 @@ import { ThemeProvider } from '@nicorp/nui';
 import '@nicorp/nui/dist/style.css';
 import App from './App';
 import './index.css';
+import { DocLangProvider } from './i18n';
 import faviconSmall from '../nui-logo-small.png';
 
 class ErrorBoundary extends React.Component<{children: React.ReactNode}, {error: Error | null}> {
@@ -29,7 +30,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ErrorBoundary>
       <BrowserRouter>
         <ThemeProvider defaultTheme="dark" attribute="class" enableSystem>
-          <App />
+          <DocLangProvider>
+            <App />
+          </DocLangProvider>
         </ThemeProvider>
       </BrowserRouter>
     </ErrorBoundary>

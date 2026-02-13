@@ -4,8 +4,10 @@ import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
 import { Bold, Italic, Underline } from 'lucide-react';
+import { useDocLang } from '~/i18n';
 
 export function TogglePage() {
+  const { t } = useDocLang();
   const [pressed1, setPressed1] = useState(false);
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
@@ -15,12 +17,12 @@ export function TogglePage() {
     <div>
       <PageHeader
         title="Toggle"
-        description="A two-state button that can be toggled on or off. Supports default and outline variants in multiple sizes. Built on Radix UI Toggle."
-        badge="Atom"
+        description={t('pages.toggle.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Toggle"
+        title={t('pages.toggle.preview1Title')}
         code={`const [pressed, setPressed] = useState(false);
 
 <Toggle pressed={pressed} onPressedChange={setPressed}>
@@ -33,7 +35,7 @@ export function TogglePage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Toggle Variants"
+        title={t('pages.toggle.preview2Title')}
         code={`<Toggle variant="default">
   <Bold className="h-4 w-4" />
 </Toggle>
@@ -53,7 +55,7 @@ export function TogglePage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Toggle Sizes"
+        title={t('pages.toggle.preview3Title')}
         code={`<Toggle size="sm">
   <Bold className="h-3 w-3" />
 </Toggle>
@@ -80,7 +82,7 @@ export function TogglePage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Text"
+        title={t('pages.toggle.preview4Title')}
         code={`<Toggle>
   <Bold className="h-4 w-4 mr-2" />
   Bold

@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { NUI_VERSION } from '../version';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { Button, ModeToggle } from '@nicorp/nui';
+import { useDocLang } from '../i18n';
 import logo from '../../nui-logo.png';
 import logoSmall from '../../nui-logo-small.png';
 
 export function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { lang, setLang } = useDocLang();
 
   return (
     <div className="flex min-h-screen">
@@ -51,6 +53,15 @@ export function Layout() {
           </div>
           <div className="flex-1" />
           <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="gap-1 text-xs font-medium"
+              onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}
+            >
+              <Globe className="h-4 w-4" />
+              {lang === 'en' ? 'RU' : 'EN'}
+            </Button>
             <ModeToggle />
             <a
               href="https://www.npmjs.com/package/@nicorp/nui"

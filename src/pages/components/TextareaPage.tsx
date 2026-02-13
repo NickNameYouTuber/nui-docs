@@ -3,27 +3,29 @@ import { Textarea, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function TextareaPage() {
+  const { t } = useDocLang();
   const [value, setValue] = useState('');
 
   return (
     <div>
       <PageHeader
         title="Textarea"
-        description="A multi-line text input field for longer form content. Supports all native textarea attributes."
-        badge="Atom"
+        description={t('pages.textarea.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Textarea"
+        title={t('pages.textarea.preview1Title')}
         code={`<Textarea placeholder="Enter your message..." />`}
       >
         <Textarea placeholder="Enter your message..." className="max-w-md" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Label"
+        title={t('pages.textarea.preview2Title')}
         code={`<div className="grid gap-2 w-full max-w-md">
   <Label htmlFor="message">Message</Label>
   <Textarea id="message" placeholder="Type your message here..." />
@@ -36,7 +38,7 @@ export function TextareaPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Controlled with Character Count"
+        title={t('pages.textarea.preview3Title')}
         code={`const [value, setValue] = useState('');
 
 <div className="grid gap-2 w-full max-w-md">
@@ -69,14 +71,14 @@ export function TextareaPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Custom Rows"
+        title={t('pages.textarea.preview4Title')}
         code={`<Textarea rows={8} placeholder="Large text area..." />`}
       >
         <Textarea rows={8} placeholder="Large text area..." className="max-w-md" />
       </ComponentPreview>
 
       <ComponentPreview
-        title="Disabled State"
+        title={t('pages.textarea.preview5Title')}
         code={`<Textarea disabled placeholder="This field is disabled" />`}
       >
         <Textarea disabled placeholder="This field is disabled" className="max-w-md" />

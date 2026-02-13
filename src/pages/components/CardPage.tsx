@@ -5,18 +5,20 @@ import {
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function CardPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <PageHeader
         title="Card"
-        description="A container component for grouping related content with optional header, body, and footer sections."
-        badge="Atom"
+        description={t('pages.card.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Default Card"
+        title={t('pages.card.preview1Title')}
         code={`<Card>
   <CardHeader>
     <CardTitle>Project Alpha</CardTitle>
@@ -45,8 +47,8 @@ export function CardPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Variants"
-        description="Cards support default, elevated, glass, and ghost variants."
+        title={t('pages.card.preview2Title')}
+        description={t('pages.card.preview2Desc')}
         code={`<Card variant="default">Default</Card>
 <Card variant="elevated">Elevated</Card>
 <Card variant="glass">Glass</Card>

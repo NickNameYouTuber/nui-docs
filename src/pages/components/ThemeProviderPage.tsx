@@ -2,15 +2,17 @@ import { useTheme, ModeToggle, ModeToggleGroup, Badge, Button } from '@nicorp/nu
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function ThemeProviderPage() {
+  const { t } = useDocLang();
   const { theme, resolvedTheme, setTheme, themes } = useTheme();
 
   return (
     <div>
       <PageHeader
         title="ThemeProvider"
-        description="Manages light/dark/system theme with localStorage persistence, OS media query sync, cross-tab communication, and transition suppression."
+        description={t('pages.themeProvider.desc')}
         badge="Theme"
       />
 
@@ -39,7 +41,7 @@ export function ThemeProviderPage() {
       </div>
 
       <ComponentPreview
-        title="ThemeProvider Setup"
+        title={t('pages.themeProvider.preview1Title')}
         code={`import { ThemeProvider } from '@nicorp/nui';
 
 ReactDOM.createRoot(root).render(
@@ -60,8 +62,8 @@ ReactDOM.createRoot(root).render(
       </ComponentPreview>
 
       <ComponentPreview
-        title="ModeToggle (Dropdown)"
-        description="A dropdown button that lets users choose between light, dark, and system themes."
+        title={t('pages.themeProvider.preview2Title')}
+        description={t('pages.themeProvider.preview2Desc')}
         code={`import { ModeToggle } from '@nicorp/nui';
 
 <ModeToggle />`}
@@ -70,8 +72,8 @@ ReactDOM.createRoot(root).render(
       </ComponentPreview>
 
       <ComponentPreview
-        title="ModeToggleGroup (Segmented)"
-        description="A compact inline segmented control for theme selection."
+        title={t('pages.themeProvider.preview3Title')}
+        description={t('pages.themeProvider.preview3Desc')}
         code={`import { ModeToggleGroup } from '@nicorp/nui';
 
 <ModeToggleGroup />`}
@@ -80,7 +82,7 @@ ReactDOM.createRoot(root).render(
       </ComponentPreview>
 
       <ComponentPreview
-        title="useTheme Hook"
+        title={t('pages.themeProvider.preview4Title')}
         code={`import { useTheme } from '@nicorp/nui';
 
 function MyComponent() {

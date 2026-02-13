@@ -3,8 +3,10 @@ import { RadioGroup, RadioGroupItem, Label } from '@nicorp/nui';
 import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
+import { useDocLang } from '~/i18n';
 
 export function RadioGroupPage() {
+  const { t } = useDocLang();
   const [value, setValue] = useState('option1');
   const [plan, setPlan] = useState('free');
 
@@ -12,12 +14,12 @@ export function RadioGroupPage() {
     <div>
       <PageHeader
         title="Radio Group"
-        description="A set of radio buttons for single-choice selection. Supports keyboard navigation and focus management. Built on Radix UI Radio Group."
-        badge="Atom"
+        description={t('pages.radioGroup.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Basic Radio Group"
+        title={t('pages.radioGroup.preview1Title')}
         code={`<RadioGroup defaultValue="option1">
   <div className="flex items-center gap-2">
     <RadioGroupItem value="option1" id="r1" />
@@ -50,7 +52,7 @@ export function RadioGroupPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Controlled Radio Group"
+        title={t('pages.radioGroup.preview2Title')}
         code={`const [value, setValue] = useState('option1');
 
 <RadioGroup value={value} onValueChange={setValue}>
@@ -81,7 +83,7 @@ export function RadioGroupPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Pricing Plan Selection"
+        title={t('pages.radioGroup.preview3Title')}
         code={`const [plan, setPlan] = useState('free');
 
 <RadioGroup value={plan} onValueChange={setPlan}>
@@ -120,7 +122,7 @@ export function RadioGroupPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="With Disabled Option"
+        title={t('pages.radioGroup.preview4Title')}
         code={`<RadioGroup defaultValue="basic">
   <div className="flex items-center gap-2">
     <RadioGroupItem value="basic" id="basic" />

@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { FileUpload, Label } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function FileUploadPage() {
+  const { t } = useDocLang();
   const [files1, setFiles1] = useState<File[]>([]);
   const [files2, setFiles2] = useState<File[]>([]);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
@@ -16,14 +18,14 @@ export default function FileUploadPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">FileUpload</h1>
         <p className="text-xl text-muted-foreground">
-          A drag-and-drop file upload component with file list management and size validation.
+          {t('pages.fileUpload.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic File Upload"
-          description="Simple file upload with drag and drop"
+          title={t('pages.fileUpload.preview1Title')}
+          description={t('pages.fileUpload.preview1Desc')}
           code={`const [files, setFiles] = useState<File[]>([])
 
 <FileUpload
@@ -41,8 +43,8 @@ export default function FileUploadPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Multiple Files"
-          description="Allow uploading multiple files at once"
+          title={t('pages.fileUpload.preview2Title')}
+          description={t('pages.fileUpload.preview2Desc')}
           code={`const [files, setFiles] = useState<File[]>([])
 
 <FileUpload

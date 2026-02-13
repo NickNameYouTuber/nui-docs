@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { DatePicker, Label } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function DatePickerPage() {
+  const { t } = useDocLang();
   const [date1, setDate1] = useState<Date | undefined>();
   const [date2, setDate2] = useState<Date | undefined>();
   const [date3, setDate3] = useState<Date | undefined>(new Date());
@@ -14,14 +16,14 @@ export default function DatePickerPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">DatePicker</h1>
         <p className="text-xl text-muted-foreground">
-          A date picker component that displays a calendar popover for selecting dates.
+          {t('pages.datePicker.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Date Picker"
-          description="Simple date picker with default formatting"
+          title={t('pages.datePicker.preview1Title')}
+          description={t('pages.datePicker.preview1Desc')}
           code={`const [date, setDate] = useState<Date>()
 
 <DatePicker
@@ -38,8 +40,8 @@ export default function DatePickerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Label"
-          description="Date picker with a label for form fields"
+          title={t('pages.datePicker.preview2Title')}
+          description={t('pages.datePicker.preview2Desc')}
           code={`const [date, setDate] = useState<Date>()
 
 <div className="space-y-2">

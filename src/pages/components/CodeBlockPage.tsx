@@ -1,21 +1,23 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { CodeBlock } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 export default function CodeBlockPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">CodeBlock</h1>
         <p className="text-xl text-muted-foreground">
-          Syntax-highlighted code blocks with optional line numbers.
+          {t('pages.codeBlock.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Code Block"
-          description="Simple TypeScript code display"
+          title={t('pages.codeBlock.preview1Title')}
+          description={t('pages.codeBlock.preview1Desc')}
           code={`<CodeBlock
   language="tsx"
   code={\`const greeting = "Hello, World!";
@@ -30,8 +32,8 @@ console.log(greeting);`}
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Line Numbers"
-          description="Display line numbers for reference"
+          title={t('pages.codeBlock.preview2Title')}
+          description={t('pages.codeBlock.preview2Desc')}
           code={`<CodeBlock
   language="tsx"
   showLineNumbers
@@ -56,8 +58,8 @@ console.log(result); // 30`}
         </ComponentPreview>
 
         <ComponentPreview
-          title="JavaScript Example"
-          description="JavaScript syntax highlighting"
+          title={t('pages.codeBlock.preview3Title')}
+          description={t('pages.codeBlock.preview3Desc')}
           code={`<CodeBlock
   language="javascript"
   showLineNumbers

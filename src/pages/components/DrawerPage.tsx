@@ -1,5 +1,6 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   Drawer,
   DrawerTrigger,
@@ -14,12 +15,13 @@ import {
 import { Menu } from 'lucide-react';
 
 export default function DrawerPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Drawer</h1>
         <p className="text-xl text-muted-foreground">
-          A drawer component that slides in from the edge of the screen.
+          {t('pages.drawer.desc')}
         </p>
         <div className="mt-4 p-4 rounded-lg border border-blue-500/50 bg-blue-500/10">
           <p className="text-sm">
@@ -32,8 +34,8 @@ export default function DrawerPage() {
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Drawer"
-          description="Simple drawer with trigger button"
+          title={t('pages.drawer.preview1Title')}
+          description={t('pages.drawer.preview1Desc')}
           code={`<Drawer>
   <DrawerTrigger asChild>
     <Button variant="outline">
@@ -87,8 +89,8 @@ export default function DrawerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Drawer from Right"
-          description="Drawer sliding from the right side"
+          title={t('pages.drawer.preview2Title')}
+          description={t('pages.drawer.preview2Desc')}
           code={`<Drawer>
   <DrawerTrigger asChild>
     <Button>Open Right Drawer</Button>
@@ -128,8 +130,8 @@ export default function DrawerPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Mobile Navigation"
-          description="Common mobile menu pattern"
+          title={t('pages.drawer.preview3Title')}
+          description={t('pages.drawer.preview3Desc')}
           code={`<Drawer>
   <DrawerTrigger asChild>
     <Button variant="ghost" size="icon">

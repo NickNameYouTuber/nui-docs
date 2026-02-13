@@ -4,8 +4,10 @@ import { PageHeader } from '~/components/PageHeader';
 import { ComponentPreview } from '~/components/ComponentPreview';
 import { PropsTable } from '~/components/PropsTable';
 import { AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline } from 'lucide-react';
+import { useDocLang } from '~/i18n';
 
 export function ToggleGroupPage() {
+  const { t } = useDocLang();
   const [align, setAlign] = useState('left');
   const [format, setFormat] = useState<string[]>([]);
 
@@ -13,12 +15,12 @@ export function ToggleGroupPage() {
     <div>
       <PageHeader
         title="Toggle Group"
-        description="A set of toggle buttons that work together. Supports single selection (radio-like) or multiple selection (checkbox-like) modes. Built on Radix UI Toggle Group."
-        badge="Atom"
+        description={t('pages.toggleGroup.desc')}
+        badge={t('common.badgeAtom')}
       />
 
       <ComponentPreview
-        title="Single Selection (Radio Mode)"
+        title={t('pages.toggleGroup.preview1Title')}
         code={`const [align, setAlign] = useState('left');
 
 <ToggleGroup type="single" value={align} onValueChange={setAlign}>
@@ -50,7 +52,7 @@ export function ToggleGroupPage() {
       </ComponentPreview>
 
       <ComponentPreview
-        title="Multiple Selection (Checkbox Mode)"
+        title={t('pages.toggleGroup.preview2Title')}
         code={`const [format, setFormat] = useState<string[]>([]);
 
 <ToggleGroup type="multiple" value={format} onValueChange={setFormat}>

@@ -1,5 +1,6 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
+import { useDocLang } from '../../i18n';
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -19,6 +20,7 @@ import { File, Folder, Image, FileText, Code } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContextMenuPage() {
+  const { t } = useDocLang();
   const [showBookmarks, setShowBookmarks] = useState(true);
   const [showUrls, setShowUrls] = useState(false);
   const [textSize, setTextSize] = useState('medium');
@@ -28,14 +30,14 @@ export default function ContextMenuPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">ContextMenu</h1>
         <p className="text-xl text-muted-foreground">
-          A right-click context menu with support for items, checkboxes, radio groups, and nested submenus.
+          {t('pages.contextMenu.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Basic Context Menu"
-          description="Right-click anywhere in the box to open the context menu"
+          title={t('pages.contextMenu.preview1Title')}
+          description={t('pages.contextMenu.preview1Desc')}
           code={`<ContextMenu>
   <ContextMenuTrigger className="flex h-40 w-full items-center justify-center rounded-md border border-dashed">
     Right click here
@@ -72,8 +74,8 @@ export default function ContextMenuPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Icons and Shortcuts"
-          description="Context menu with icons and keyboard shortcuts"
+          title={t('pages.contextMenu.preview2Title')}
+          description={t('pages.contextMenu.preview2Desc')}
           code={`<ContextMenu>
   <ContextMenuTrigger className="flex h-40 w-full items-center justify-center rounded-md border border-dashed">
     Right click here
@@ -140,8 +142,8 @@ export default function ContextMenuPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="Nested Submenus"
-          description="Context menu with multi-level nested submenus"
+          title={t('pages.contextMenu.preview3Title')}
+          description={t('pages.contextMenu.preview3Desc')}
           code={`<ContextMenu>
   <ContextMenuTrigger className="flex h-40 w-full items-center justify-center rounded-md border border-dashed">
     Right click here
@@ -222,8 +224,8 @@ export default function ContextMenuPage() {
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Checkboxes"
-          description="Context menu with checkbox items for toggling options"
+          title={t('pages.contextMenu.preview4Title')}
+          description={t('pages.contextMenu.preview4Desc')}
           code={`const [showBookmarks, setShowBookmarks] = useState(true);
 const [showUrls, setShowUrls] = useState(false);
 
@@ -282,8 +284,8 @@ const [showUrls, setShowUrls] = useState(false);
         </ComponentPreview>
 
         <ComponentPreview
-          title="With Radio Groups"
-          description="Context menu with radio groups for mutually exclusive choices"
+          title={t('pages.contextMenu.preview5Title')}
+          description={t('pages.contextMenu.preview5Desc')}
           code={`const [textSize, setTextSize] = useState('medium');
 
 <ContextMenu>
@@ -333,8 +335,8 @@ const [showUrls, setShowUrls] = useState(false);
         </ComponentPreview>
 
         <ComponentPreview
-          title="File Browser Example"
-          description="Real-world example: file browser with comprehensive context menu"
+          title={t('pages.contextMenu.preview6Title')}
+          description={t('pages.contextMenu.preview6Desc')}
           code={`<ContextMenu>
   <ContextMenuTrigger className="flex h-40 w-full items-center justify-center rounded-md border bg-muted/40">
     <div className="text-center space-y-2">

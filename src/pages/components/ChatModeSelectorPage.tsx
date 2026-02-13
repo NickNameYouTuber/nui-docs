@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChatModeSelector } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 
 const modes = [
   { id: 'creative', label: 'Creative', icon: '✨', description: 'More creative and imaginative responses' },

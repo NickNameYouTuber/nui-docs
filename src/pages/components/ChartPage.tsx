@@ -1,6 +1,7 @@
 import { ComponentPreview } from '../../components/ComponentPreview';
 import { PropsTable } from '../../components/PropsTable';
 import { ChartContainer, ChartTooltip, ChartLegend } from '@nicorp/nui';
+import { useDocLang } from '../../i18n';
 import {
   LineChart,
   Line,
@@ -56,19 +57,20 @@ const categoryData = [
 const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))'];
 
 export default function ChartPage() {
+  const { t } = useDocLang();
   return (
     <div>
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Chart</h1>
         <p className="text-xl text-muted-foreground">
-          Responsive chart components built with Recharts for data visualization.
+          {t('pages.chart.desc')}
         </p>
       </div>
 
       <div className="space-y-8">
         <ComponentPreview
-          title="Line Chart"
-          description="Simple line chart for trends"
+          title={t('pages.chart.preview1Title')}
+          description={t('pages.chart.preview1Desc')}
           code={`import { ChartContainer } from '@nicorp/nui';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
 
@@ -105,8 +107,8 @@ const data = [
         </ComponentPreview>
 
         <ComponentPreview
-          title="Bar Chart"
-          description="Bar chart for categorical comparisons"
+          title={t('pages.chart.preview2Title')}
+          description={t('pages.chart.preview2Desc')}
           code={`<ChartContainer>
   <BarChart data={data}>
     <CartesianGrid strokeDasharray="3 3" />
@@ -129,8 +131,8 @@ const data = [
         </ComponentPreview>
 
         <ComponentPreview
-          title="Area Chart"
-          description="Area chart showing filled regions"
+          title={t('pages.chart.preview3Title')}
+          description={t('pages.chart.preview3Desc')}
           code={`<ChartContainer>
   <AreaChart data={data}>
     <CartesianGrid strokeDasharray="3 3" />
@@ -166,8 +168,8 @@ const data = [
         </ComponentPreview>
 
         <ComponentPreview
-          title="Multiple Datasets"
-          description="Compare multiple data series"
+          title={t('pages.chart.preview4Title')}
+          description={t('pages.chart.preview4Desc')}
           code={`<ChartContainer>
   <LineChart data={data}>
     <CartesianGrid strokeDasharray="3 3" />
@@ -206,8 +208,8 @@ const data = [
         </ComponentPreview>
 
         <ComponentPreview
-          title="Stacked Bar Chart"
-          description="Stacked bars for cumulative data"
+          title={t('pages.chart.preview5Title')}
+          description={t('pages.chart.preview5Desc')}
           code={`<ChartContainer>
   <BarChart data={data}>
     <CartesianGrid strokeDasharray="3 3" />
@@ -234,8 +236,8 @@ const data = [
         </ComponentPreview>
 
         <ComponentPreview
-          title="Pie Chart"
-          description="Circular chart for proportions"
+          title={t('pages.chart.preview6Title')}
+          description={t('pages.chart.preview6Desc')}
           code={`<ChartContainer>
   <PieChart>
     <Pie
