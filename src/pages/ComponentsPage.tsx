@@ -63,6 +63,16 @@ import {
   Loader2,
   FileText,
   Lightbulb,
+  Brain,
+  Wrench,
+  List,
+  PanelTopOpen,
+  Quote,
+  Paperclip,
+  LayoutList,
+  Sparkles,
+  ThumbsUp,
+  Zap,
 } from 'lucide-react';
 
 const documented = [
@@ -138,6 +148,18 @@ const documented = [
   { label: 'AILoading', href: '/components/ai-loading', icon: Loader2, category: 'AI' },
   { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText, category: 'AI' },
   { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb, category: 'AI' },
+  { label: 'ModelSelector', href: '/components/model-selector', icon: Sparkles, category: 'AI' },
+  { label: 'ChatModeSelector', href: '/components/chat-mode-selector', icon: Zap, category: 'AI' },
+  { label: 'ChatFollowUp', href: '/components/chat-follow-up', icon: MessageCircle, category: 'AI' },
+  { label: 'MessageActions', href: '/components/message-actions', icon: ThumbsUp, category: 'AI' },
+  { label: 'StreamingText', href: '/components/streaming-text', icon: Type, category: 'AI' },
+  { label: 'ReasoningBlock', href: '/components/reasoning-block', icon: Brain, category: 'AI' },
+  { label: 'ChatToolCall', href: '/components/chat-tool-call', icon: Wrench, category: 'AI' },
+  { label: 'ConversationList', href: '/components/conversation-list', icon: List, category: 'AI' },
+  { label: 'ChatHeader', href: '/components/chat-header', icon: PanelTopOpen, category: 'AI' },
+  { label: 'SourceCitation', href: '/components/source-citation', icon: Quote, category: 'AI' },
+  { label: 'FilePreview', href: '/components/file-preview', icon: Paperclip, category: 'AI' },
+  { label: 'ChatMessage', href: '/components/chat-message', icon: LayoutList, category: 'AI' },
 ];
 
 const allComponents = [
@@ -215,6 +237,18 @@ const allComponents = [
   { name: 'AILoading', icon: Loader2, category: 'AI', doc: true },
   { name: 'MarkdownRenderer', icon: FileText, category: 'AI', doc: true },
   { name: 'PromptSuggestions', icon: Lightbulb, category: 'AI', doc: true },
+  { name: 'ModelSelector', icon: Sparkles, category: 'AI', doc: true },
+  { name: 'ChatModeSelector', icon: Zap, category: 'AI', doc: true },
+  { name: 'ChatFollowUp', icon: MessageCircle, category: 'AI', doc: true },
+  { name: 'MessageActions', icon: ThumbsUp, category: 'AI', doc: true },
+  { name: 'StreamingText', icon: Type, category: 'AI', doc: true },
+  { name: 'ReasoningBlock', icon: Brain, category: 'AI', doc: true },
+  { name: 'ChatToolCall', icon: Wrench, category: 'AI', doc: true },
+  { name: 'ConversationList', icon: List, category: 'AI', doc: true },
+  { name: 'ChatHeader', icon: PanelTopOpen, category: 'AI', doc: true },
+  { name: 'SourceCitation', icon: Quote, category: 'AI', doc: true },
+  { name: 'FilePreview', icon: Paperclip, category: 'AI', doc: true },
+  { name: 'ChatMessage', icon: LayoutList, category: 'AI', doc: true },
 ];
 
 const categories = ['All', 'Atoms', 'Advanced', 'Layout', 'Overlays', 'Navigation', 'Feedback', 'Data', 'AI', 'Theme'];

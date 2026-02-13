@@ -76,6 +76,18 @@ import ChatContainerPage from '~/pages/components/ChatContainerPage';
 import AILoadingPage from '~/pages/components/AILoadingPage';
 import MarkdownRendererPage from '~/pages/components/MarkdownRendererPage';
 import PromptSuggestionsPage from '~/pages/components/PromptSuggestionsPage';
+import ModelSelectorPage from '~/pages/components/ModelSelectorPage';
+import ChatModeSelectorPage from '~/pages/components/ChatModeSelectorPage';
+import ChatFollowUpPage from '~/pages/components/ChatFollowUpPage';
+import MessageActionsPage from '~/pages/components/MessageActionsPage';
+import StreamingTextPage from '~/pages/components/StreamingTextPage';
+import ReasoningBlockPage from '~/pages/components/ReasoningBlockPage';
+import ChatToolCallPage from '~/pages/components/ChatToolCallPage';
+import ConversationListPage from '~/pages/components/ConversationListPage';
+import ChatHeaderPage from '~/pages/components/ChatHeaderPage';
+import SourceCitationPage from '~/pages/components/SourceCitationPage';
+import FilePreviewPage from '~/pages/components/FilePreviewPage';
+import ChatMessagePage from '~/pages/components/ChatMessagePage';
 
 export default function App() {
   return (
@@ -157,6 +169,18 @@ export default function App() {
         <Route path="/components/ai-loading" element={<AILoadingPage />} />
         <Route path="/components/markdown-renderer" element={<MarkdownRendererPage />} />
         <Route path="/components/prompt-suggestions" element={<PromptSuggestionsPage />} />
+        <Route path="/components/model-selector" element={<ModelSelectorPage />} />
+        <Route path="/components/chat-mode-selector" element={<ChatModeSelectorPage />} />
+        <Route path="/components/chat-follow-up" element={<ChatFollowUpPage />} />
+        <Route path="/components/message-actions" element={<MessageActionsPage />} />
+        <Route path="/components/streaming-text" element={<StreamingTextPage />} />
+        <Route path="/components/reasoning-block" element={<ReasoningBlockPage />} />
+        <Route path="/components/chat-tool-call" element={<ChatToolCallPage />} />
+        <Route path="/components/conversation-list" element={<ConversationListPage />} />
+        <Route path="/components/chat-header" element={<ChatHeaderPage />} />
+        <Route path="/components/source-citation" element={<SourceCitationPage />} />
+        <Route path="/components/file-preview" element={<FilePreviewPage />} />
+        <Route path="/components/chat-message" element={<ChatMessagePage />} />
       </Route>
     </Routes>
   );
