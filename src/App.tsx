@@ -89,6 +89,10 @@ import SourceCitationPage from '~/pages/components/SourceCitationPage';
 import FilePreviewPage from '~/pages/components/FilePreviewPage';
 import ChatMessagePage from '~/pages/components/ChatMessagePage';
 import TranslateProviderPage from '~/pages/components/TranslateProviderPage';
+import ChatQuestionPage from '~/pages/components/ChatQuestionPage';
+import ChatActionCardPage from '~/pages/components/ChatActionCardPage';
+import ChatEntityPreviewPage from '~/pages/components/ChatEntityPreviewPage';
+import ChatResultCardPage from '~/pages/components/ChatResultCardPage';
 import AIChatDemoPage from '~/pages/examples/AIChatDemoPage';
 
 export default function App() {
@@ -184,6 +188,10 @@ export default function App() {
         <Route path="/components/file-preview" element={<FilePreviewPage />} />
         <Route path="/components/chat-message" element={<ChatMessagePage />} />
         <Route path="/components/translate-provider" element={<TranslateProviderPage />} />
+        <Route path="/components/chat-question" element={<ChatQuestionPage />} />
+        <Route path="/components/chat-action-card" element={<ChatActionCardPage />} />
+        <Route path="/components/chat-entity-preview" element={<ChatEntityPreviewPage />} />
+        <Route path="/components/chat-result-card" element={<ChatResultCardPage />} />
         <Route path="/examples/ai-chat-demo" element={<AIChatDemoPage />} />
       </Route>
     </Routes>

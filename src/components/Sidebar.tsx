@@ -56,6 +56,7 @@ import {
   BarChart3,
   Gauge,
   GitBranch,
+  CheckCircle2,
   FileJson,
   PanelLeft,
   Code2,
@@ -78,6 +79,8 @@ import {
   Zap,
   Globe,
   Play,
+  HelpCircle,
+  Eye,
 } from 'lucide-react';
 import { NUI_VERSION } from '../version';
 import logo from '../../nui-logo.png';
@@ -226,6 +229,10 @@ const getNavSections = (t: (k: string) => string) => [
       { label: 'AILoading', href: '/components/ai-loading', icon: Loader2 },
       { label: 'MarkdownRenderer', href: '/components/markdown-renderer', icon: FileText },
       { label: 'PromptSuggestions', href: '/components/prompt-suggestions', icon: Lightbulb },
+      { label: 'ChatQuestion', href: '/components/chat-question', icon: HelpCircle },
+      { label: 'ChatActionCard', href: '/components/chat-action-card', icon: CheckCircle2 },
+      { label: 'ChatEntityPreview', href: '/components/chat-entity-preview', icon: Eye },
+      { label: 'ChatResultCard', href: '/components/chat-result-card', icon: Sparkles },
     ],
   },
   {
